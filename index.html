@@ -106,7 +106,7 @@
 
   /* Hero */
   .hero{position:relative;color:#fff;background:var(--navy-deep)}
-  .hero .bg{position:absolute;inset:0;background:linear-gradient(105deg,rgba(11,28,44,.93) 0%,rgba(15,40,62,.82) 42%,rgba(19,49,78,.55) 100%),url("https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1700&q=80");background-size:cover;background-position:center}
+  .hero .bg{position:absolute;inset:0;background:linear-gradient(105deg,rgba(11,28,44,.88) 0%,rgba(15,40,62,.75) 42%,rgba(19,49,78,.45) 100%),url("https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1700&q=85");background-size:cover;background-position:center}
   .hero .wrap{position:relative;padding:120px 22px 128px;max-width:860px}
   .hero .since{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.2rem;padding:.4rem 1rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-family:var(--font-display);font-size:.84rem;font-weight:600;letter-spacing:.03em}
   .hero .since::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
@@ -125,6 +125,8 @@
   /* Intro split */
   .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   .intro-photo{border-radius:var(--radius);min-height:420px;background:linear-gradient(135deg,var(--steel),var(--navy)),url("https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1100&q=80");background-size:cover;background-position:center;background-blend-mode:overlay;box-shadow:var(--shadow);position:relative}
+  /* Storefront: low-res source, so contain + navy fill to keep it sharp */
+  .storefront-photo{background:var(--navy-deep) url('assets/wss_roanoke.jpg') center center / contain no-repeat;background-blend-mode:normal}
   .intro-photo .badge{position:absolute;left:-18px;bottom:30px;background:var(--accent);color:#fff;padding:18px 24px;border-radius:14px;box-shadow:var(--shadow);font-family:var(--font-display)}
   .intro-photo .badge b{display:block;font-size:1.7rem;font-weight:800;line-height:1}
   .intro-photo .badge span{font-size:.82rem;opacity:.92}
@@ -308,8 +310,8 @@
 <!-- ===== Intro split ===== -->
 <section class="section">
   <div class="wrap intro-grid">
-    <div class="intro-photo reveal" style="background-image:url('assets/wss_roanoke.jpg');background-blend-mode:normal">
-      <!-- Storefront photo: add the file at assets/storefront.jpg (see note). Falls back to a gradient until present. -->
+    <!-- TODO: replace wss_roanoke.jpg with a higher-res storefront photo from David (phone photo works great) -->
+    <div class="intro-photo reveal storefront-photo">
       <div class="badge"><b>Since 1989</b><span>Trusted by building pros</span></div>
     </div>
     <div class="reveal">

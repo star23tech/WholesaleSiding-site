@@ -221,6 +221,7 @@
   .mfg-row:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
   .mfg-logo{display:grid;place-items:center;min-height:90px;background:var(--bg-soft);border-radius:12px;padding:18px;text-align:center}
   .mfg-logo b{font-family:var(--font-display);font-size:1.25rem;color:var(--navy);line-height:1.2}
+  .mfg-logo img{max-width:100%;max-height:80px;width:auto;height:auto;object-fit:contain;display:block}
   .mfg-row h3{margin:0 0 .35em;font-size:1.2rem}
   .mfg-row p{margin:0 0 .6rem;color:var(--muted);font-size:.97rem}
   .mfg-row .learn{font-family:var(--font-display);font-weight:700;font-size:.9rem;color:var(--accent);display:inline-flex;align-items:center;gap:.3rem}

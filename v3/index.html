@@ -4,33 +4,48 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wholesale Siding Supply, Inc. | Explorer Layout | Roanoke, VA</title>
-<meta name="description" content="Explore wholesale exterior building products — filter by category, build a quote list, and request pricing. Interactive layout demo.">
+<meta name="description" content="Explore wholesale exterior building products, build a quote list, and submit a complete request in minutes. Interactive layout demo.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!--
-  LAYOUT C — "Interactive Product Explorer"
-  Hero + an on-page filterable product grid with a build-a-quote list (cart).
-  All client-side, no backend. Reuses shared tokens/components from
-  ../assets/styles.css; layout-specific rules below.
+  LAYOUT C — "Interactive Product Explorer + Guided Quote Builder"
+  Hero + filterable product grid + a multi-step quote request flow that
+  captures the details a rep would otherwise gather by phone, then shows the
+  structured request the team's shared inbox would receive.
+
+  DEMO ONLY: submission is simulated client-side (confirmation + reference #).
+  To go live, point submitQuote() at a form service (Formspree/Basin/Netlify)
+  that delivers to the shared mailbox — see the TODO in submitQuote().
+
+  Reuses shared tokens/components from ../assets/styles.css; layout-specific
+  rules below.
 -->
 <link rel="stylesheet" href="../assets/styles.css">
 <style>
   /* ---- Hero ---- */
   .x-hero{position:relative;color:#fff;background:var(--navy-deep);overflow:hidden}
   .x-hero .bg{position:absolute;inset:0;background:linear-gradient(105deg,rgba(11,28,44,.9) 0%,rgba(15,40,62,.74) 45%,rgba(19,49,78,.5) 100%),url('../assets/ws_header.png');background-size:cover;background-position:center}
-  .x-hero .wrap{position:relative;padding:88px 22px 96px;max-width:820px}
+  .x-hero .wrap{position:relative;padding:84px 22px 92px;max-width:820px}
   .x-hero .since{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.1rem;padding:.4rem 1rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-family:var(--font-display);font-size:.82rem;font-weight:600}
   .x-hero .since::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
   .x-hero h1{color:#fff;font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800;margin-bottom:.35em}
   .x-hero p{font-size:1.18rem;color:#dce7f1;max-width:600px}
   .x-hero .actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.7rem}
 
+  /* ---- How it works strip ---- */
+  .how{background:var(--navy);color:#dbe6f0}
+  .how .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding:26px 22px}
+  .how .step{display:flex;gap:.8rem;align-items:flex-start}
+  .how .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:.9rem}
+  .how h4{color:#fff;margin:0 0 .15rem;font-size:1rem}
+  .how p{margin:0;font-size:.9rem;color:#a9bccd}
+
   /* ---- Explorer ---- */
-  .explorer{padding:64px 0 90px}
-  .explorer .head{text-align:center;margin-bottom:26px}
+  .explorer{padding:60px 0 40px}
+  .explorer .head{text-align:center;margin-bottom:24px}
   .x-toolbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 0;margin-bottom:30px}
   .x-toolbar .in{display:flex;flex-direction:column;gap:12px;max-width:var(--wrap);margin:0 auto;padding:0 22px}
   .x-search{display:flex;align-items:center;gap:.6rem;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:.6rem 1.1rem;max-width:460px;width:100%}
@@ -56,11 +71,11 @@
   .x-card.in-list .add{background:var(--accent);color:#fff}
   .x-card.in-list .add .plus{display:none}
   .x-card .add .check{display:none}
-  .x-card.in-list .add .check{display:inline-flex}
+  .x-card.in-list .add .check{display:inline-flex;align-items:center;gap:.4rem}
   .x-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px;border:1px dashed var(--line);border-radius:14px}
 
   /* ---- Floating quote bar ---- */
-  .quote-bar{position:fixed;left:50%;bottom:74px;transform:translateX(-50%) translateY(140%);z-index:150;display:flex;align-items:center;gap:1rem;background:var(--navy);color:#fff;padding:.7rem .8rem .7rem 1.3rem;border-radius:999px;box-shadow:0 16px 44px rgba(0,0,0,.32);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+  .quote-bar{position:fixed;left:50%;bottom:74px;transform:translateX(-50%) translateY(160%);z-index:150;display:flex;align-items:center;gap:1rem;background:var(--navy);color:#fff;padding:.7rem .8rem .7rem 1.3rem;border-radius:999px;box-shadow:0 16px 44px rgba(0,0,0,.32);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
   .quote-bar.show{transform:translateX(-50%) translateY(0)}
   .quote-bar .lbl{font-family:var(--font-display);font-weight:700;font-size:.95rem}
   .quote-bar .lbl b{color:#e8a86a}
@@ -69,14 +84,97 @@
   .quote-bar .clear{background:none;border:0;color:#9fb2c4;cursor:pointer;font-size:.85rem;font-family:var(--font-display);font-weight:600;padding:.3rem .5rem}
   .quote-bar .clear:hover{color:#fff}
 
-  /* ---- Contact ---- */
-  .x-contact{background:var(--bg-soft)}
-  .selected-note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:.8rem 1rem;font-size:.9rem;color:var(--muted);margin-bottom:1rem;display:none}
-  .selected-note.show{display:block}
-  .selected-note b{color:var(--navy)}
+  /* ===== Guided quote builder ===== */
+  .builder{background:var(--bg-soft)}
+  .builder .panel{max-width:840px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
 
-  @media(max-width:980px){.x-grid{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:760px){.x-grid{grid-template-columns:repeat(2,1fr)}.quote-bar{bottom:70px;left:12px;right:12px;transform:translateY(140%);width:auto}.quote-bar.show{transform:translateY(0)}}
+  /* Progress steps */
+  .steps{display:flex;background:var(--navy-deep)}
+  .steps .s{flex:1;display:flex;align-items:center;gap:.6rem;justify-content:center;padding:16px 10px;color:#7f93a6;font-family:var(--font-display);font-weight:700;font-size:.92rem;position:relative}
+  .steps .s .dot{width:26px;height:26px;border-radius:50%;border:2px solid #46596c;display:grid;place-items:center;font-size:.82rem;flex:none}
+  .steps .s.active{color:#fff}
+  .steps .s.active .dot{border-color:var(--accent);background:var(--accent);color:#fff}
+  .steps .s.done{color:#cdd9e5}
+  .steps .s.done .dot{border-color:var(--accent);color:var(--accent)}
+  .steps .s .lbl{white-space:nowrap}
+  @media(max-width:620px){.steps .s .lbl{display:none}.steps .s{padding:14px 6px}}
+
+  .step-body{padding:30px 32px}
+  .step-pane{display:none}
+  .step-pane.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .step-body h3{font-size:1.3rem;margin:0 0 .25rem}
+  .step-body .sub{color:var(--muted);margin:0 0 1.3rem;font-size:.97rem}
+
+  /* Item rows */
+  .qitems{display:grid;gap:12px;margin-bottom:1rem}
+  .qitem{display:grid;grid-template-columns:1.4fr 84px 1.6fr auto;gap:12px;align-items:center;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .qitem .nm{font-family:var(--font-display);font-weight:700;color:var(--navy);font-size:.96rem}
+  .qitem .nm small{display:block;font-family:var(--font-body);font-weight:500;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}
+  .qitem input{width:100%;padding:.55rem .6rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+  .qitem input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(201,118,47,.15)}
+  .qitem .rm{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1.3rem;line-height:1;padding:.2rem .4rem;border-radius:8px}
+  .qitem .rm:hover{color:#c0392b;background:#fbe9e7}
+  .qitems-empty{text-align:center;color:var(--muted);padding:28px;border:1px dashed var(--line);border-radius:12px;margin-bottom:1rem}
+  .addmore{font-family:var(--font-display);font-weight:700;font-size:.9rem;color:var(--accent);cursor:pointer;display:inline-flex;align-items:center;gap:.35rem}
+  @media(max-width:620px){.qitem{grid-template-columns:1fr auto;gap:8px}.qitem .qty-w,.qitem .note-w{grid-column:1/-1}}
+
+  /* Choice cards (customer type / fulfillment) */
+  .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.2rem}
+  .choice{position:relative;border:1.5px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;transition:.15s}
+  .choice:hover{border-color:#c2cedb}
+  .choice input{position:absolute;opacity:0;pointer-events:none}
+  .choice .t{font-family:var(--font-display);font-weight:700;color:var(--navy);margin-bottom:.15rem;display:block}
+  .choice .d{font-size:.84rem;color:var(--muted)}
+  .choice.sel{border-color:var(--accent);background:rgba(201,118,47,.05);box-shadow:0 0 0 3px rgba(201,118,47,.12)}
+  .choices.two{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:620px){.choices,.choices.two{grid-template-columns:1fr}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media(max-width:620px){.grid2{grid-template-columns:1fr}}
+  .fld{margin-bottom:1rem}
+  .fld label{font-family:var(--font-display);display:block;font-weight:600;font-size:.9rem;margin-bottom:.35rem;color:var(--navy)}
+  .fld label .opt{color:var(--muted);font-weight:500;font-size:.8rem}
+  .fld input,.fld textarea,.fld select{width:100%;padding:.8rem .9rem;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+  .fld input:focus,.fld textarea:focus,.fld select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(201,118,47,.15)}
+  .fld textarea{min-height:90px;resize:vertical}
+
+  /* Step nav */
+  .step-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:20px 32px;border-top:1px solid var(--line);background:#fff}
+  .step-nav .back{background:none;border:0;color:var(--muted);font-family:var(--font-display);font-weight:700;cursor:pointer;padding:.5rem .2rem}
+  .step-nav .back:hover{color:var(--navy)}
+  .step-nav .back[hidden]{visibility:hidden}
+
+  /* Review */
+  .review-block{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+  .review-block .rh{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+  .review-block h4{margin:0;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+  .review-block .edit{font-family:var(--font-display);font-weight:700;font-size:.82rem;color:var(--steel);background:none;border:0;cursor:pointer}
+  .review-block .edit:hover{color:var(--accent)}
+  .review-block .kv{font-size:.95rem;color:var(--ink)}
+  .review-block .kv b{color:var(--navy)}
+  .review-list{margin:0;padding-left:1.1rem;font-size:.95rem}
+  .review-list li{margin-bottom:.2rem}
+  .consent{font-size:.85rem;color:var(--muted);margin:.4rem 0 0}
+
+  /* Confirmation */
+  .confirm{text-align:center;padding:10px 4px}
+  .confirm .ok{width:64px;height:64px;border-radius:50%;background:#e7f4ea;display:grid;place-items:center;margin:0 auto 1rem}
+  .confirm .ok svg{width:34px;height:34px;stroke:#2e8b57;fill:none;stroke-width:2.5}
+  .confirm h3{font-size:1.5rem;margin:0 0 .3rem}
+  .confirm .ref{display:inline-block;font-family:var(--font-display);font-weight:800;letter-spacing:.04em;color:var(--navy);background:var(--bg-soft);border:1px dashed var(--accent);border-radius:10px;padding:.5rem 1rem;margin:.6rem 0}
+  .confirm p{color:var(--muted);max-width:520px;margin:.4rem auto}
+  .receipt{text-align:left;background:#0e2438;color:#cfe0f0;border-radius:12px;padding:18px 20px;margin:1.2rem auto 0;max-width:560px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.82rem;line-height:1.6;white-space:pre-wrap;overflow:auto}
+  .receipt .h{color:#e8a86a;font-weight:700}
+  .demo-flag{font-size:.8rem;color:var(--muted);margin-top:1rem;font-style:italic}
+
+  /* ---- Slim contact band ---- */
+  .x-contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .x-contact .map{margin-top:0}
+  @media(max-width:820px){.x-contact .wrap{grid-template-columns:1fr;gap:26px}}
+
+  @media(max-width:980px){.x-grid{grid-template-columns:repeat(3,1fr)}.how .wrap{grid-template-columns:1fr}}
+  @media(max-width:760px){.x-grid{grid-template-columns:repeat(2,1fr)}.quote-bar{bottom:70px;left:12px;right:12px;transform:translateY(160%);width:auto}.quote-bar.show{transform:translateY(0)}.step-body,.step-nav{padding-left:20px;padding-right:20px}}
   @media(max-width:460px){.x-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -111,14 +209,14 @@
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="main" id="primaryNav">
       <ul>
-        <li><a href="#explore">Explore</a></li>
+        <li><a href="#explore">Browse</a></li>
+        <li><a href="#quote">Get a Quote</a></li>
         <li><a href="../#why">Why Us</a></li>
-        <li><a href="../#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn--outline btn-quote" href="#contact">Get a Quote</a>
+      <a class="btn btn--outline btn-quote" href="#quote">Get a Quote</a>
       <a class="btn btn--primary" href="tel:+15402651835">
         <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
         Call
@@ -133,20 +231,29 @@
   <div class="wrap">
     <span class="since">Locally owned &amp; operated since 1989</span>
     <h1>Find your products. Build your quote.</h1>
-    <p>Browse our full exterior line, filter by category, and add what your job needs to a quote list — then send it over in one click. No phone tag required.</p>
+    <p>Browse our full exterior line, add what your job needs, and send a complete quote request in minutes — so our team can price it without playing phone tag.</p>
     <div class="actions">
       <a class="btn btn--primary" href="#explore">Start Browsing</a>
-      <a class="btn btn--ghost" href="#contact">Request a Quote</a>
+      <a class="btn btn--ghost" href="#quote">Request a Quote</a>
     </div>
   </div>
 </section>
+
+<!-- ===== How it works ===== -->
+<div class="how">
+  <div class="wrap">
+    <div class="step"><span class="n">1</span><div><h4>Add your products</h4><p>Filter or search, then add items to your quote list.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h4>Tell us the details</h4><p>Quantities, delivery or pickup, and when you need it.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h4>Send it over</h4><p>We get a complete request and respond within one business day.</p></div></div>
+  </div>
+</div>
 
 <!-- ===== Explorer ===== -->
 <section class="explorer" id="explore">
   <div class="wrap head">
     <p class="eyebrow">Product Explorer</p>
     <h2>Browse &amp; build your list</h2>
-    <p class="lead center">Filter by category or search, then tap <b>Add to quote</b> on anything you need. We'll price it all together.</p>
+    <p class="lead center">Filter by category or search, then tap <b>Add to quote</b> on anything you need.</p>
   </div>
 
   <div class="x-toolbar">
@@ -177,48 +284,128 @@
 <!-- ===== Floating quote bar ===== -->
 <div class="quote-bar" id="quoteBar" aria-live="polite">
   <span class="lbl"><b id="qCount">0</b> items in your quote list</span>
-  <button class="go" id="qGo">Request these &rarr;</button>
+  <button class="go" id="qGo">Build your quote &rarr;</button>
   <button class="clear" id="qClear">Clear</button>
 </div>
 
-<!-- ===== Contact ===== -->
-<section class="section x-contact" id="contact">
+<!-- ===== Guided quote builder ===== -->
+<section class="section builder" id="quote">
   <div class="wrap">
     <div class="section-head center">
-      <p class="eyebrow">Get In Touch</p>
-      <h2>Request a quote or ask a question</h2>
-      <p class="lead">Send us your details and we'll get back to you within one business day.</p>
+      <p class="eyebrow">Request a Quote</p>
+      <h2>Tell us what you need</h2>
+      <p class="lead">A few quick details and our team prices the whole request together — no back-and-forth.</p>
     </div>
-    <div class="contact-grid">
-      <div>
-        <div class="info-block">
-          <h3>Roanoke, Virginia</h3>
-          <div class="info-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>2131 Plantation Rd NE<br>Roanoke, VA 24012</span></div>
-          <div class="info-row"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><a href="tel:+15402651835">(540) 265-1835</a> · Toll-free <a href="tel:+18009501838">(800) 950-1838</a></span></div>
-          <div class="info-row"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span><a href="mailto:sales@wssinc.biz">sales@wssinc.biz</a></span></div>
-        </div>
-        <div class="map">
-          <iframe
-            title="Wholesale Siding Supply location — Roanoke, VA"
-            src="https://www.google.com/maps?q=2131%20Plantation%20Rd%20NE%2C%20Roanoke%2C%20VA%2024012&output=embed"
-            width="100%" height="240" style="border:0;display:block" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+
+    <div class="panel">
+      <!-- Progress -->
+      <div class="steps" id="stepBar">
+        <div class="s active" data-step="1"><span class="dot">1</span><span class="lbl">Your items</span></div>
+        <div class="s" data-step="2"><span class="dot">2</span><span class="lbl">About you</span></div>
+        <div class="s" data-step="3"><span class="dot">3</span><span class="lbl">Project</span></div>
+        <div class="s" data-step="4"><span class="dot">4</span><span class="lbl">Review</span></div>
       </div>
-      <div class="form-card">
-        <div class="selected-note" id="selectedNote"></div>
-        <form id="contactForm" novalidate>
-          <div class="row">
-            <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
-            <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" autocomplete="tel" required></div>
+
+      <form id="quoteForm" novalidate>
+        <div class="step-body">
+
+          <!-- Step 1: Items -->
+          <div class="step-pane active" data-pane="1">
+            <h3>Your items</h3>
+            <p class="sub">Set a quantity and add a quick note (size, color, in-stock vs. special-order) for anything you'd like priced.</p>
+            <div class="qitems" id="qItems"></div>
+            <div class="qitems-empty" id="qItemsEmpty" hidden>No products added yet. <a class="addmore" href="#explore">Browse products ↑</a> or continue and describe what you need in the project notes.</div>
+            <a class="addmore" href="#explore">+ Add more products</a>
           </div>
-          <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
-          <div class="field"><label for="message">How can we help?</label><textarea id="message" name="message" required></textarea></div>
-          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Send Message</button>
-          <p class="form-note">We typically respond within one business day. Your information is only used to reply to your inquiry.</p>
-          <div class="success" id="formSuccess">Thanks! Your message has been sent. We'll be in touch soon.</div>
-        </form>
+
+          <!-- Step 2: About you -->
+          <div class="step-pane" data-pane="2">
+            <h3>About you</h3>
+            <p class="sub">This helps us route your request to the right person and price it correctly.</p>
+            <div class="choices" id="custType" role="radiogroup" aria-label="Customer type">
+              <label class="choice"><input type="radio" name="ctype" value="Contractor (existing account)"><span class="t">Contractor</span><span class="d">I have an account with you</span></label>
+              <label class="choice"><input type="radio" name="ctype" value="Contractor (new)"><span class="t">New contractor</span><span class="d">First time ordering</span></label>
+              <label class="choice"><input type="radio" name="ctype" value="Homeowner"><span class="t">Homeowner</span><span class="d">Personal project</span></label>
+            </div>
+            <div class="grid2">
+              <div class="fld"><label for="qName">Name</label><input type="text" id="qName" autocomplete="name" required></div>
+              <div class="fld"><label for="qCompany">Company <span class="opt">(optional)</span></label><input type="text" id="qCompany" autocomplete="organization"></div>
+            </div>
+            <div class="grid2">
+              <div class="fld"><label for="qPhone">Phone</label><input type="tel" id="qPhone" autocomplete="tel" required></div>
+              <div class="fld"><label for="qEmail">Email</label><input type="email" id="qEmail" autocomplete="email" required></div>
+            </div>
+          </div>
+
+          <!-- Step 3: Project -->
+          <div class="step-pane" data-pane="3">
+            <h3>Project details</h3>
+            <p class="sub">How would you like to receive your materials, and when do you need them?</p>
+            <div class="choices two" id="fulfill" role="radiogroup" aria-label="Fulfillment method">
+              <label class="choice"><input type="radio" name="fmethod" value="Delivery"><span class="t">Delivery</span><span class="d">Deliver to my job site</span></label>
+              <label class="choice"><input type="radio" name="fmethod" value="Will-call pickup"><span class="t">Will-call pickup</span><span class="d">I'll pick up in Roanoke</span></label>
+            </div>
+            <div class="fld" id="addrField"><label for="qAddr">Job / delivery address</label><input type="text" id="qAddr" autocomplete="street-address"></div>
+            <div class="grid2">
+              <div class="fld"><label for="qNeeded">Needed by <span class="opt">(optional)</span></label><input type="date" id="qNeeded"></div>
+              <div class="fld"><label for="qContactPref">Best way to reach you</label>
+                <select id="qContactPref"><option>Phone call</option><option>Text message</option><option>Email</option></select>
+              </div>
+            </div>
+            <div class="fld"><label for="qNotes">Additional notes <span class="opt">(optional)</span></label><textarea id="qNotes" placeholder="Anything else we should know — colors, specs, special-order items, questions…"></textarea></div>
+          </div>
+
+          <!-- Step 4: Review -->
+          <div class="step-pane" data-pane="4">
+            <h3>Review &amp; submit</h3>
+            <p class="sub">Here's what we'll receive. Looks good? Send it over.</p>
+            <div id="reviewArea"></div>
+            <p class="consent">By submitting, you agree we may contact you about this request. We only use your information to respond to your inquiry.</p>
+          </div>
+
+          <!-- Confirmation (replaces panes on submit) -->
+          <div class="step-pane" data-pane="done">
+            <div class="confirm">
+              <div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+              <h3>Quote request received</h3>
+              <div class="ref" id="refNo">WSS-0000-0000</div>
+              <p>Thanks! A copy has been sent to our team's shared inbox and we'll get back to you within one business day. Save your reference number for any follow-up.</p>
+              <div class="receipt" id="receipt"></div>
+              <p class="demo-flag">Demo preview — this is the structured request the team's inbox would receive. (No email is actually sent in this mockup.)</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Step nav -->
+        <div class="step-nav" id="stepNav">
+          <button type="button" class="back" id="btnBack" hidden>&larr; Back</button>
+          <button type="button" class="btn btn--primary" id="btnNext" style="margin-left:auto">Continue &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Slim contact band ===== -->
+<section class="section section--soft x-contact" id="contact">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Prefer to Talk?</p>
+      <h2>We're a call away</h2>
+      <div class="info-block" style="margin-top:1rem">
+        <div class="info-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>2131 Plantation Rd NE<br>Roanoke, VA 24012</span></div>
+        <div class="info-row"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><a href="tel:+15402651835">(540) 265-1835</a> · Toll-free <a href="tel:+18009501838">(800) 950-1838</a></span></div>
+        <div class="info-row"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span><a href="mailto:sales@wssinc.biz">sales@wssinc.biz</a></span></div>
+        <div class="info-row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Mon–Fri 7:30a–4:30p</span></div>
       </div>
+    </div>
+    <div class="map">
+      <iframe
+        title="Wholesale Siding Supply location — Roanoke, VA"
+        src="https://www.google.com/maps?q=2131%20Plantation%20Rd%20NE%2C%20Roanoke%2C%20VA%2024012&output=embed"
+        width="100%" height="260" style="border:0;display:block" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -238,7 +425,7 @@
       </div>
       <div>
         <h4>Company</h4>
-        <a href="../#about">About</a><a href="../#why">Why Us</a><a href="#explore">Explore</a><a href="#contact">Contact</a>
+        <a href="../#about">About</a><a href="../#why">Why Us</a><a href="#quote">Get a Quote</a><a href="#contact">Contact</a>
       </div>
       <div>
         <h4>Contact</h4>
@@ -257,33 +444,34 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ---- Product data (demo). Images reuse the shared category assets. ----
+  /* ---- Product data (demo). Images reuse the shared category assets. ---- */
   var SIDING = "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=700&q=80";
   var TOOLS  = "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=700&q=80";
   var CATLABEL = {siding:"Siding",windows:"Windows",doors:"Doors",gutters:"Gutters",decking:"Decking",railing:"Railing & Fencing",trim:"Trim",tools:"Tools"};
   var PRODUCTS = [
-    {n:"Vinyl Siding",            c:"siding",  img:SIDING, t:["Vinyl","Insulated options"]},
-    {n:"Fiber Cement Siding",     c:"siding",  img:SIDING, t:["Fiber cement","Wood-grain"]},
-    {n:"Engineered Wood Siding",  c:"siding",  img:SIDING, t:["LP® SmartSide®"]},
-    {n:"Metal Siding & Roofing",  c:"siding",  img:SIDING, t:["Steel","Standing seam"]},
-    {n:"Manufactured Stone",      c:"siding",  img:SIDING, t:["Stone veneer","StoneCraft"]},
-    {n:"Double-Hung Windows",     c:"windows", img:"../assets/window.png", t:["Energy-efficient"]},
-    {n:"Casement Windows",        c:"windows", img:"../assets/window.png", t:["New construction"]},
-    {n:"Entry Doors",             c:"doors",   img:"../assets/door.png",   t:["Steel","Fiberglass"]},
-    {n:"Patio Doors",             c:"doors",   img:"../assets/door.png",   t:["Sliding","French"]},
-    {n:"Storm Doors",             c:"doors",   img:"../assets/door.png",   t:["Full-view"]},
-    {n:"Gutter Coil & Accessories",c:"gutters",img:"../assets/gutter.png", t:["Made in-house"]},
-    {n:"Gutter Guards",           c:"gutters", img:"../assets/gutter.png", t:["Leaf protection"]},
-    {n:"Composite Decking",       c:"decking", img:"../assets/deck.png",   t:["Low-maintenance"]},
-    {n:"Deck Railing Systems",    c:"railing", img:"../assets/fence.png",  t:["Aluminum","Composite"]},
-    {n:"Vinyl Fencing",           c:"railing", img:"../assets/fence.png",  t:["Privacy","Picket"]},
-    {n:"Shutters & Columns",      c:"trim",    img:"../assets/trim.png",   t:["Decorative"]},
-    {n:"Soffit & Trim",           c:"trim",    img:"../assets/trim.png",   t:["Aluminum","Vinyl"]},
-    {n:"Pro Tools & Fasteners",   c:"tools",   img:TOOLS,  t:["Job-site ready"]}
+    {n:"Vinyl Siding",            c:"siding",  img:SIDING, t:["Vinyl","Insulated options"], unit:"squares"},
+    {n:"Fiber Cement Siding",     c:"siding",  img:SIDING, t:["Fiber cement","Wood-grain"], unit:"squares"},
+    {n:"Engineered Wood Siding",  c:"siding",  img:SIDING, t:["LP® SmartSide®"], unit:"pieces"},
+    {n:"Metal Siding & Roofing",  c:"siding",  img:SIDING, t:["Steel","Standing seam"], unit:"sq ft"},
+    {n:"Manufactured Stone",      c:"siding",  img:SIDING, t:["Stone veneer","StoneCraft"], unit:"sq ft"},
+    {n:"Double-Hung Windows",     c:"windows", img:"../assets/window.png", t:["Energy-efficient"], unit:"units"},
+    {n:"Casement Windows",        c:"windows", img:"../assets/window.png", t:["New construction"], unit:"units"},
+    {n:"Entry Doors",             c:"doors",   img:"../assets/door.png",   t:["Steel","Fiberglass"], unit:"units"},
+    {n:"Patio Doors",             c:"doors",   img:"../assets/door.png",   t:["Sliding","French"], unit:"units"},
+    {n:"Storm Doors",             c:"doors",   img:"../assets/door.png",   t:["Full-view"], unit:"units"},
+    {n:"Gutter Coil & Accessories",c:"gutters",img:"../assets/gutter.png", t:["Made in-house"], unit:"ft"},
+    {n:"Gutter Guards",           c:"gutters", img:"../assets/gutter.png", t:["Leaf protection"], unit:"ft"},
+    {n:"Composite Decking",       c:"decking", img:"../assets/deck.png",   t:["Low-maintenance"], unit:"boards"},
+    {n:"Deck Railing Systems",    c:"railing", img:"../assets/fence.png",  t:["Aluminum","Composite"], unit:"ft"},
+    {n:"Vinyl Fencing",           c:"railing", img:"../assets/fence.png",  t:["Privacy","Picket"], unit:"ft"},
+    {n:"Shutters & Columns",      c:"trim",    img:"../assets/trim.png",   t:["Decorative"], unit:"pairs"},
+    {n:"Soffit & Trim",           c:"trim",    img:"../assets/trim.png",   t:["Aluminum","Vinyl"], unit:"pieces"},
+    {n:"Pro Tools & Fasteners",   c:"tools",   img:TOOLS,  t:["Job-site ready"], unit:"items"}
   ];
 
   var grid = document.getElementById('xGrid');
-  var list = {}; // selected products by name
+  /* selected: id -> {qty, note} */
+  var selected = {};
 
   function cardHTML(p, i){
     var tags = p.t.map(function(t){ return '<span>'+t+'</span>'; }).join('');
@@ -297,21 +485,17 @@
   }
   grid.innerHTML = PRODUCTS.map(cardHTML).join('') + '<div class="x-empty" id="xEmpty" hidden>No products match. Try another category or search term.</div>';
 
-  // ---- Filtering ----
+  /* ---- Filtering ---- */
   var search = document.getElementById('xSearch');
   var chips = document.getElementById('chips');
   var empty = document.getElementById('xEmpty');
   var activeCat = 'all';
-
   function applyFilter(){
-    var q = search.value.trim().toLowerCase();
-    var shown = 0;
+    var q = search.value.trim().toLowerCase(); var shown = 0;
     document.querySelectorAll('.x-card').forEach(function(c){
       var okCat = activeCat === 'all' || c.getAttribute('data-cat') === activeCat;
       var okText = !q || c.getAttribute('data-name').indexOf(q) > -1;
-      var show = okCat && okText;
-      c.style.display = show ? '' : 'none';
-      if(show) shown++;
+      var show = okCat && okText; c.style.display = show ? '' : 'none'; if(show) shown++;
     });
     empty.hidden = shown > 0;
   }
@@ -319,53 +503,215 @@
   chips.addEventListener('click', function(e){
     var b = e.target.closest('.chip'); if(!b) return;
     document.querySelectorAll('.chip').forEach(function(x){ x.classList.remove('is-active'); });
-    b.classList.add('is-active');
-    activeCat = b.getAttribute('data-cat');
-    applyFilter();
+    b.classList.add('is-active'); activeCat = b.getAttribute('data-cat'); applyFilter();
   });
 
-  // ---- Quote list (cart) ----
+  /* ---- Add / remove from quote ---- */
   var bar = document.getElementById('quoteBar');
   var qCount = document.getElementById('qCount');
-  var note = document.getElementById('selectedNote');
-  var messageField = document.getElementById('message');
-
-  function refreshList(){
-    var names = Object.keys(list);
-    qCount.textContent = names.length;
-    bar.classList.toggle('show', names.length > 0);
-    if(names.length){
-      note.classList.add('show');
-      note.innerHTML = '<b>'+names.length+' product'+(names.length>1?'s':'')+'</b> on your quote list: '+names.join(', ')+'.';
-    } else {
-      note.classList.remove('show');
-    }
+  function syncBar(){
+    var n = Object.keys(selected).length;
+    qCount.textContent = n; bar.classList.toggle('show', n > 0);
+  }
+  function setCardState(id, on){
+    var card = document.querySelector('.x-card[data-id="'+id+'"]');
+    if(card) card.classList.toggle('in-list', on);
   }
   grid.addEventListener('click', function(e){
     var btn = e.target.closest('.add'); if(!btn) return;
-    var card = btn.closest('.x-card');
-    var name = PRODUCTS[+btn.getAttribute('data-id')].n;
-    if(list[name]){ delete list[name]; card.classList.remove('in-list'); }
-    else { list[name] = true; card.classList.add('in-list'); }
-    refreshList();
+    var id = btn.getAttribute('data-id');
+    if(selected[id]){ delete selected[id]; setCardState(id, false); }
+    else { selected[id] = {qty:'', note:''}; setCardState(id, true); }
+    syncBar();
   });
   document.getElementById('qClear').addEventListener('click', function(){
-    list = {};
-    document.querySelectorAll('.x-card.in-list').forEach(function(c){ c.classList.remove('in-list'); });
-    refreshList();
+    Object.keys(selected).forEach(function(id){ setCardState(id, false); });
+    selected = {}; syncBar(); renderItems();
   });
   document.getElementById('qGo').addEventListener('click', function(){
-    var names = Object.keys(list);
-    if(names.length){
-      var pre = "I'd like a quote on the following:\n- " + names.join("\n- ") + "\n\n";
-      // Keep anything the user already typed below the generated list
-      var existing = messageField.value.replace(/^I'd like a quote on the following:[\s\S]*?\n\n/, '');
-      messageField.value = pre + existing;
-    }
-    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+    renderItems(); goStep(1);
+    document.getElementById('quote').scrollIntoView({behavior:'smooth'});
   });
 
-  // ---- Mobile nav ----
+  /* ===== Quote builder ===== */
+  var step = 1;
+  var panes = document.querySelectorAll('.step-pane');
+  var stepEls = document.querySelectorAll('#stepBar .s');
+  var btnNext = document.getElementById('btnNext');
+  var btnBack = document.getElementById('btnBack');
+
+  function renderItems(){
+    var wrap = document.getElementById('qItems');
+    var emptyEl = document.getElementById('qItemsEmpty');
+    var ids = Object.keys(selected);
+    emptyEl.hidden = ids.length > 0;
+    wrap.innerHTML = ids.map(function(id){
+      var p = PRODUCTS[+id], s = selected[id];
+      return '<div class="qitem" data-id="'+id+'">'+
+        '<div class="nm">'+p.n+'<small>'+CATLABEL[p.c]+'</small></div>'+
+        '<div class="qty-w"><input type="text" inputmode="decimal" placeholder="Qty ('+p.unit+')" value="'+(s.qty||'')+'" data-f="qty" aria-label="Quantity for '+p.n+'"></div>'+
+        '<div class="note-w"><input type="text" placeholder="Size, color, in-stock / special-order…" value="'+(s.note||'').replace(/"/g,'&quot;')+'" data-f="note" aria-label="Note for '+p.n+'"></div>'+
+        '<button type="button" class="rm" data-id="'+id+'" aria-label="Remove '+p.n+'">&times;</button>'+
+        '</div>';
+    }).join('');
+  }
+  /* keep item edits in state */
+  document.getElementById('qItems').addEventListener('input', function(e){
+    var row = e.target.closest('.qitem'); if(!row) return;
+    var id = row.getAttribute('data-id'); var f = e.target.getAttribute('data-f');
+    if(selected[id]) selected[id][f] = e.target.value;
+  });
+  document.getElementById('qItems').addEventListener('click', function(e){
+    var rm = e.target.closest('.rm'); if(!rm) return;
+    var id = rm.getAttribute('data-id');
+    delete selected[id]; setCardState(id, false); syncBar(); renderItems();
+  });
+
+  /* choice cards selected styling */
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.addEventListener('change', function(){
+      group.querySelectorAll('.choice').forEach(function(c){
+        c.classList.toggle('sel', c.querySelector('input').checked);
+      });
+      if(group.id === 'fulfill') toggleAddr();
+    });
+  });
+  function toggleAddr(){
+    var pickup = (document.querySelector('input[name="fmethod"]:checked')||{}).value === 'Will-call pickup';
+    var f = document.getElementById('addrField');
+    f.querySelector('label').innerHTML = pickup ? 'Job address <span class="opt">(optional)</span>' : 'Job / delivery address';
+    f.querySelector('input').required = !pickup;
+  }
+
+  function goStep(n){
+    step = n;
+    panes.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-pane') === String(n)); });
+    stepEls.forEach(function(s){
+      var sn = +s.getAttribute('data-step');
+      s.classList.toggle('active', sn === n);
+      s.classList.toggle('done', sn < n);
+    });
+    btnBack.hidden = n === 1;
+    btnNext.innerHTML = n === 4 ? 'Submit request &rarr;' : 'Continue &rarr;';
+    document.getElementById('stepBar').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+
+  function validateStep(n){
+    if(n === 2){
+      if(!document.querySelector('input[name="ctype"]:checked')){ alert('Please choose what best describes you.'); return false; }
+      var req = ['qName','qPhone','qEmail'];
+      for(var i=0;i<req.length;i++){ var el=document.getElementById(req[i]); if(!el.value.trim()){ el.focus(); el.reportValidity ? el.reportValidity() : alert('Please complete all required fields.'); return false; } }
+      var em=document.getElementById('qEmail'); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){ em.focus(); alert('Please enter a valid email.'); return false; }
+    }
+    if(n === 3){
+      if(!document.querySelector('input[name="fmethod"]:checked')){ alert('Please choose delivery or pickup.'); return false; }
+      var addr=document.getElementById('qAddr');
+      if(addr.required && !addr.value.trim()){ addr.focus(); alert('Please enter a delivery address (or choose will-call pickup).'); return false; }
+    }
+    return true;
+  }
+
+  btnNext.addEventListener('click', function(){
+    if(step < 4){ if(!validateStep(step)) return; if(step===3) buildReview(); goStep(step+1); }
+    else { submitQuote(); }
+  });
+  btnBack.addEventListener('click', function(){ if(step>1) goStep(step-1); });
+
+  function val(id){ return document.getElementById(id).value.trim(); }
+  function ctype(){ var e=document.querySelector('input[name="ctype"]:checked'); return e?e.value:''; }
+  function fmethod(){ var e=document.querySelector('input[name="fmethod"]:checked'); return e?e.value:''; }
+
+  function itemLines(){
+    return Object.keys(selected).map(function(id){
+      var p = PRODUCTS[+id], s = selected[id];
+      var q = s.qty ? s.qty + ' ' + p.unit : 'qty TBD';
+      return {name:p.n, detail:q + (s.note ? ' — ' + s.note : '')};
+    });
+  }
+
+  function buildReview(){
+    var items = itemLines();
+    var itemsHTML = items.length
+      ? '<ul class="review-list">'+items.map(function(it){ return '<li><b>'+it.name+'</b> — '+it.detail+'</li>'; }).join('')+'</ul>'
+      : '<div class="kv" style="color:var(--muted)">No specific products listed — see project notes.</div>';
+    var needed = val('qNeeded');
+    var area = document.getElementById('reviewArea');
+    area.innerHTML =
+      block('Items', 1, itemsHTML) +
+      block('Customer', 2,
+        '<div class="kv"><b>'+(ctype()||'—')+'</b></div>'+
+        '<div class="kv">'+val('qName')+(val('qCompany')?' · '+val('qCompany'):'')+'</div>'+
+        '<div class="kv">'+val('qPhone')+' · '+val('qEmail')+'</div>') +
+      block('Project', 3,
+        '<div class="kv"><b>'+(fmethod()||'—')+'</b>'+(val('qAddr')?' · '+val('qAddr'):'')+'</div>'+
+        '<div class="kv">'+(needed?'Needed by '+needed:'No date specified')+' · Prefers '+val('qContactPref')+'</div>'+
+        (val('qNotes')?'<div class="kv" style="margin-top:.3rem;color:var(--muted)">“'+val('qNotes')+'”</div>':''));
+  }
+  function block(title, toStep, inner){
+    return '<div class="review-block"><div class="rh"><h4>'+title+'</h4>'+
+      '<button type="button" class="edit" data-step="'+toStep+'">Edit</button></div>'+inner+'</div>';
+  }
+  document.getElementById('reviewArea').addEventListener('click', function(e){
+    var b = e.target.closest('.edit'); if(!b) return;
+    goStep(+b.getAttribute('data-step'));
+  });
+
+  /* Build the structured request the shared inbox would receive */
+  function buildReceipt(ref){
+    var items = itemLines();
+    var L = [];
+    L.push('QUOTE REQUEST  ·  ' + ref);
+    L.push('Submitted: ' + new Date().toLocaleString());
+    L.push('');
+    L.push('CUSTOMER');
+    L.push('  Type:    ' + (ctype()||'—'));
+    L.push('  Name:    ' + val('qName') + (val('qCompany') ? '  ('+val('qCompany')+')' : ''));
+    L.push('  Phone:   ' + val('qPhone'));
+    L.push('  Email:   ' + val('qEmail'));
+    L.push('');
+    L.push('ITEMS');
+    if(items.length){ items.forEach(function(it){ L.push('  • ' + it.name + ' — ' + it.detail); }); }
+    else { L.push('  (none specified — see notes)'); }
+    L.push('');
+    L.push('FULFILLMENT');
+    L.push('  Method:    ' + (fmethod()||'—'));
+    if(val('qAddr')) L.push('  Address:   ' + val('qAddr'));
+    L.push('  Needed by: ' + (val('qNeeded') || 'not specified'));
+    L.push('  Contact via: ' + val('qContactPref'));
+    if(val('qNotes')){ L.push(''); L.push('NOTES'); L.push('  ' + val('qNotes')); }
+    return L.join('\n');
+  }
+
+  function submitQuote(){
+    var ref = 'WSS-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random()*9000);
+    var receiptText = buildReceipt(ref);
+
+    /* =========================================================
+       TODO (go live): deliver to the shared mailbox. With a form
+       service this is one fetch — e.g. Formspree:
+
+       fetch('https://formspree.io/f/XXXXXXXX', {
+         method:'POST',
+         headers:{'Content-Type':'application/json','Accept':'application/json'},
+         body: JSON.stringify({ reference:ref, summary:receiptText, email:val('qEmail') })
+       });
+
+       For the demo we just show the confirmation below.
+       ========================================================= */
+
+    document.getElementById('refNo').textContent = ref;
+    var r = document.getElementById('receipt');
+    r.textContent = receiptText;
+    /* highlight section headers */
+    r.innerHTML = r.innerHTML.replace(/^(QUOTE REQUEST.*|CUSTOMER|ITEMS|FULFILLMENT|NOTES)$/gm, '<span class="h">$1</span>');
+
+    goStep('done');
+    btnNext.style.display = 'none';
+    btnBack.style.display = 'none';
+    document.getElementById('quote').scrollIntoView({behavior:'smooth'});
+  }
+
+  /* ---- Mobile nav ---- */
   var toggle = document.querySelector('.menu-toggle');
   var nav = document.getElementById('primaryNav');
   toggle.addEventListener('click', function(){
@@ -376,13 +722,9 @@
     a.addEventListener('click', function(){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
   });
 
-  // ---- Demo form handler ----
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!this.checkValidity()){ this.reportValidity(); return; }
-    document.getElementById('formSuccess').style.display = 'block';
-    this.reset();
-  });
+  /* init */
+  renderItems();
+  goStep(1);
 </script>
 </body>
 </html>

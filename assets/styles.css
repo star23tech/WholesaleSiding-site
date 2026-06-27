@@ -231,3 +231,11 @@
     .mfg-logo{min-height:auto;padding:22px}
     .mfg-row .learn{justify-content:center}
   }
+
+  /* ===== Layout-version switcher (review aid — remove before launch) ===== */
+  .vswitch{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:.2rem;background:rgba(14,36,56,.96);backdrop-filter:blur(6px);color:#fff;padding:.45rem .55rem;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,.32);font-family:var(--font-display);font-size:.85rem;border:1px solid rgba(255,255,255,.12)}
+  .vswitch .lbl{color:#9fb2c4;font-weight:600;padding:0 .55rem 0 .45rem;white-space:nowrap}
+  .vswitch a{color:#cdd9e5;font-weight:700;padding:.35rem .85rem;border-radius:999px;transition:background .15s ease,color .15s ease}
+  .vswitch a:hover{color:#fff;background:rgba(255,255,255,.1)}
+  .vswitch a.is-active{background:var(--accent);color:#fff}
+  @media(max-width:520px){.vswitch .lbl{display:none}.vswitch{font-size:.8rem}}

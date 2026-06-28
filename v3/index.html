@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wholesale Siding Supply, Inc. | Quote Builder Layout | Roanoke, VA</title>
-<meta name="description" content="Explore wholesale exterior building products, build a quote list, and submit a complete request — all in one place. Interactive layout demo.">
+<meta name="description" content="Explore wholesale exterior building products, build a quote list, and submit a complete request, all in one place. Interactive layout demo.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -237,7 +237,7 @@
   <div class="wrap">
     <span class="since">Locally owned &amp; operated since 1989</span>
     <h1>Find your products. Build your quote.</h1>
-    <p>Browse our full exterior line, add what your job needs, and send a complete quote request — all in one place, on your schedule.</p>
+    <p>Browse our full exterior line, add what your job needs, and send a complete quote request, all in one place, on your schedule.</p>
     <div class="actions">
       <a class="btn btn--primary" href="#explore">Start Browsing</a>
       <a class="btn btn--ghost" href="#quote">Request a Quote</a>
@@ -266,7 +266,7 @@
     <div class="in">
       <label class="x-search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="search" id="xSearch" placeholder="Search products — e.g. fiber cement, patio door, gutter coil…" aria-label="Search products">
+        <input type="search" id="xSearch" placeholder="Search products: e.g. fiber cement, patio door, gutter coil…" aria-label="Search products">
       </label>
       <div class="chips" id="chips">
         <button class="chip is-active" data-cat="all">All</button>
@@ -355,7 +355,7 @@
             <div class="fld"><label for="qContactPref">Best way to reach you</label>
               <select id="qContactPref"><option>Phone call</option><option>Text message</option><option>Email</option></select>
             </div>
-            <div class="fld"><label for="qNotes">Additional notes <span class="opt">(optional)</span></label><textarea id="qNotes" placeholder="Anything else we should know — colors, specs, special-order items, questions…"></textarea></div>
+            <div class="fld"><label for="qNotes">Additional notes <span class="opt">(optional)</span></label><textarea id="qNotes" placeholder="Anything else we should know: colors, specs, special-order items, questions…"></textarea></div>
           </div>
 
           <!-- Step 4: Review -->
@@ -374,7 +374,7 @@
               <div class="ref" id="refNo">WSS-0000-0000</div>
               <p>Thanks! Your request has been submitted. Save your reference number for any follow-up.</p>
               <div class="receipt" id="receipt"></div>
-              <p class="demo-flag">Demo preview — this is the organized request that gets submitted. (No email is actually sent in this mockup.)</p>
+              <p class="demo-flag">Demo preview: this is the organized request that gets submitted. (No email is actually sent in this mockup.)</p>
             </div>
           </div>
 
@@ -405,7 +405,7 @@
     </div>
     <div class="map">
       <iframe
-        title="Wholesale Siding Supply location — Roanoke, VA"
+        title="Wholesale Siding Supply location in Roanoke, VA"
         src="https://www.google.com/maps?q=2131%20Plantation%20Rd%20NE%2C%20Roanoke%2C%20VA%2024012&output=embed"
         width="100%" height="260" style="border:0;display:block" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -419,7 +419,7 @@
     <div class="cols">
       <div>
         <div class="brand" style="color:#fff;margin-bottom:.7rem"><span class="mark">WS</span><span style="color:#fff">Wholesale Siding Supply, Inc.</span></div>
-        <p class="tagline">"Everything exterior for your home — from the gutters down."</p>
+        <p class="tagline">"Everything exterior for your home, from the gutters down."</p>
         <p style="margin:0">2131 Plantation Rd NE<br>Roanoke, VA 24012</p>
       </div>
       <div>
@@ -629,24 +629,24 @@
     return Object.keys(selected).map(function(id){
       var p = PRODUCTS[+id], s = selected[id];
       var q = s.qty ? s.qty + ' ' + p.unit : 'qty TBD';
-      return {name:p.n, detail:q + (s.note ? ' — ' + s.note : '')};
+      return {name:p.n, detail:q + (s.note ? ': ' + s.note : '')};
     });
   }
 
   function buildReview(){
     var items = itemLines();
     var itemsHTML = items.length
-      ? '<ul class="review-list">'+items.map(function(it){ return '<li><b>'+it.name+'</b> — '+it.detail+'</li>'; }).join('')+'</ul>'
-      : '<div class="kv" style="color:var(--muted)">No specific products listed — see project notes.</div>';
+      ? '<ul class="review-list">'+items.map(function(it){ return '<li><b>'+it.name+'</b>: '+it.detail+'</li>'; }).join('')+'</ul>'
+      : '<div class="kv" style="color:var(--muted)">No specific products listed. See project notes.</div>';
     var area = document.getElementById('reviewArea');
     area.innerHTML =
       block('Items', 1, itemsHTML) +
       block('Customer', 2,
-        '<div class="kv"><b>'+(ctype()||'—')+'</b></div>'+
+        '<div class="kv"><b>'+(ctype()||'N/A')+'</b></div>'+
         '<div class="kv">'+val('qName')+(val('qCompany')?' · '+val('qCompany'):'')+'</div>'+
         '<div class="kv">'+val('qPhone')+' · '+val('qEmail')+'</div>') +
       block('Project', 3,
-        '<div class="kv"><b>'+(fmethod()||'—')+'</b>'+(val('qAddr')?' · '+val('qAddr'):'')+'</div>'+
+        '<div class="kv"><b>'+(fmethod()||'N/A')+'</b>'+(val('qAddr')?' · '+val('qAddr'):'')+'</div>'+
         '<div class="kv">Prefers '+val('qContactPref')+'</div>'+
         (val('qNotes')?'<div class="kv" style="margin-top:.3rem;color:var(--muted)">“'+val('qNotes')+'”</div>':''));
   }
@@ -667,17 +667,17 @@
     L.push('Submitted: ' + new Date().toLocaleString());
     L.push('');
     L.push('CUSTOMER');
-    L.push('  Type:    ' + (ctype()||'—'));
+    L.push('  Type:    ' + (ctype()||'N/A'));
     L.push('  Name:    ' + val('qName') + (val('qCompany') ? '  ('+val('qCompany')+')' : ''));
     L.push('  Phone:   ' + val('qPhone'));
     L.push('  Email:   ' + val('qEmail'));
     L.push('');
     L.push('ITEMS');
-    if(items.length){ items.forEach(function(it){ L.push('  • ' + it.name + ' — ' + it.detail); }); }
-    else { L.push('  (none specified — see notes)'); }
+    if(items.length){ items.forEach(function(it){ L.push('  • ' + it.name + ': ' + it.detail); }); }
+    else { L.push('  (none specified, see notes)'); }
     L.push('');
     L.push('FULFILLMENT');
-    L.push('  Method:    ' + (fmethod()||'—'));
+    L.push('  Method:    ' + (fmethod()||'N/A'));
     if(val('qAddr')) L.push('  Address:   ' + val('qAddr'));
     L.push('  Contact via: ' + val('qContactPref'));
     if(val('qNotes')){ L.push(''); L.push('NOTES'); L.push('  ' + val('qNotes')); }

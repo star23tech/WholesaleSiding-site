@@ -346,11 +346,8 @@
               <label class="choice"><input type="radio" name="fmethod" value="Will-call pickup"><span class="t">Will-call pickup</span><span class="d">I'll pick up in Roanoke</span></label>
             </div>
             <div class="fld" id="addrField"><label for="qAddr">Job / delivery address</label><input type="text" id="qAddr" autocomplete="street-address"></div>
-            <div class="grid2">
-              <div class="fld"><label for="qNeeded">Needed by <span class="opt">(optional)</span></label><input type="date" id="qNeeded"></div>
-              <div class="fld"><label for="qContactPref">Best way to reach you</label>
-                <select id="qContactPref"><option>Phone call</option><option>Text message</option><option>Email</option></select>
-              </div>
+            <div class="fld"><label for="qContactPref">Best way to reach you</label>
+              <select id="qContactPref"><option>Phone call</option><option>Text message</option><option>Email</option></select>
             </div>
             <div class="fld"><label for="qNotes">Additional notes <span class="opt">(optional)</span></label><textarea id="qNotes" placeholder="Anything else we should know — colors, specs, special-order items, questions…"></textarea></div>
           </div>
@@ -634,7 +631,6 @@
     var itemsHTML = items.length
       ? '<ul class="review-list">'+items.map(function(it){ return '<li><b>'+it.name+'</b> — '+it.detail+'</li>'; }).join('')+'</ul>'
       : '<div class="kv" style="color:var(--muted)">No specific products listed — see project notes.</div>';
-    var needed = val('qNeeded');
     var area = document.getElementById('reviewArea');
     area.innerHTML =
       block('Items', 1, itemsHTML) +
@@ -644,7 +640,7 @@
         '<div class="kv">'+val('qPhone')+' · '+val('qEmail')+'</div>') +
       block('Project', 3,
         '<div class="kv"><b>'+(fmethod()||'—')+'</b>'+(val('qAddr')?' · '+val('qAddr'):'')+'</div>'+
-        '<div class="kv">'+(needed?'Needed by '+needed:'No date specified')+' · Prefers '+val('qContactPref')+'</div>'+
+        '<div class="kv">Prefers '+val('qContactPref')+'</div>'+
         (val('qNotes')?'<div class="kv" style="margin-top:.3rem;color:var(--muted)">“'+val('qNotes')+'”</div>':''));
   }
   function block(title, toStep, inner){
@@ -676,7 +672,6 @@
     L.push('FULFILLMENT');
     L.push('  Method:    ' + (fmethod()||'—'));
     if(val('qAddr')) L.push('  Address:   ' + val('qAddr'));
-    L.push('  Needed by: ' + (val('qNeeded') || 'not specified'));
     L.push('  Contact via: ' + val('qContactPref'));
     if(val('qNotes')){ L.push(''); L.push('NOTES'); L.push('  ' + val('qNotes')); }
     return L.join('\n');

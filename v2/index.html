@@ -74,14 +74,16 @@
   .brand-logos img{height:40px;width:auto;object-fit:contain;opacity:.92;transition:opacity .15s ease,transform .15s ease}
   .brand-logos img:hover{opacity:1;transform:translateY(-2px)}
 
-  /* ===== Why choose us ===== */
+  /* ===== Why choose us (image + feature list) ===== */
   .v2why{background:var(--bg-soft)}
-  .v2why .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:8px}
-  .vcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm)}
-  .vcard .ic{width:52px;height:52px;border-radius:13px;background:rgba(192,154,74,.14);display:grid;place-items:center;margin-bottom:15px}
-  .vcard .ic svg{width:27px;height:27px;stroke:var(--accent);fill:none;stroke-width:2}
-  .vcard h3{font-size:1.12rem;margin:0 0 .35rem}
-  .vcard p{font-size:.94rem;color:var(--muted);margin:0}
+  .whychoose{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:6px}
+  .whychoose-img{border-radius:18px;min-height:480px;background-size:cover;background-position:center;background-color:var(--steel);box-shadow:var(--shadow)}
+  .wc-list{display:grid;gap:26px}
+  .wc-item{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+  .wc-item .ic{width:50px;height:50px;border-radius:13px;background:rgba(192,154,74,.15);display:grid;place-items:center;flex:none}
+  .wc-item .ic svg{width:25px;height:25px;stroke:var(--accent);fill:none;stroke-width:2}
+  .wc-item h3{font-size:1.12rem;margin:0 0 .25rem}
+  .wc-item p{margin:0;color:var(--muted);font-size:.95rem}
 
   /* ===== Visit / showroom ===== */
   .v2visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
@@ -104,12 +106,12 @@
   @media(max-width:900px){
     .v2hero .wrap{grid-template-columns:1fr;gap:34px;padding:54px 22px 60px}
     .hero-form{max-width:520px}
-    .v2why .grid{grid-template-columns:repeat(2,1fr)}
+    .whychoose{grid-template-columns:1fr;gap:30px}
+    .whychoose-img{min-height:300px;order:-1}
     .v2visit .wrap{grid-template-columns:1fr;gap:30px}
     .v2reviews .grid{grid-template-columns:1fr}
   }
   @media(max-width:560px){
-    .v2why .grid{grid-template-columns:1fr}
     .trust-row .sep{display:none}
   }
 </style>
@@ -273,30 +275,49 @@
 <section class="section v2why" id="why">
   <div class="wrap">
     <div class="section-head center">
-      <p class="eyebrow">Why Build With Us</p>
-      <h2>Premium brands, supplied right</h2>
-      <p class="lead">Our focus is quality materials, the right selection, and the kind of service that keeps building professionals coming back.</p>
+      <p class="eyebrow">Why Choose Wholesale Siding Supply?</p>
+      <h2>A trusted partner for building professionals</h2>
+      <p class="lead">Our focus is quality materials, the right selection, and the kind of service that keeps building professionals coming back — whether you run a small crew or a large production operation across Virginia and West Virginia.</p>
     </div>
-    <div class="grid">
-      <div class="vcard reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg></div>
-        <h3>Three decades of trust</h3>
-        <p>Locally owned and operated since 1989, with deep roots serving the region's building professionals.</p>
-      </div>
-      <div class="vcard reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
-        <h3>Premium brands</h3>
-        <p>The highest-quality siding, windows, doors, decking and more — from the manufacturers the pros trust.</p>
-      </div>
-      <div class="vcard reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM7 7a3 3 0 1 0-6 0 3 3 0 0 0 6 0z"/></svg></div>
-        <h3>Selection that delivers</h3>
-        <p>Extensive in-stock inventory plus special-order options, so you get exactly what the job needs.</p>
-      </div>
-      <div class="vcard reveal">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <h3>Wide delivery area</h3>
-        <p>We deliver across an expansive area throughout Virginia and West Virginia.</p>
+    <div class="whychoose">
+      <!-- TODO: replace with David's real photo (storefront, warehouse, team, or a finished project) -->
+      <div class="whychoose-img reveal" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1100&q=80')" role="img" aria-label="Quality exterior building products"></div>
+      <div class="wc-list">
+        <div class="wc-item reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg></div>
+          <div>
+            <h3>Premium brands</h3>
+            <p>The highest-quality siding, windows, doors, decking and more — from the manufacturers building professionals trust.</p>
+          </div>
+        </div>
+        <div class="wc-item reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM7 7a3 3 0 1 0-6 0 3 3 0 0 0 6 0z"/></svg></div>
+          <div>
+            <h3>Selection that delivers</h3>
+            <p>Extensive in-stock inventory plus special-order options, so you get exactly what the job needs.</p>
+          </div>
+        </div>
+        <div class="wc-item reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l4 2V9l4 2V9l4 2v10M9 21v-4h2v4"/></svg></div>
+          <div>
+            <h3>Our own gutter facility</h3>
+            <p>Since 2008 we produce our own gutter accessories in-house — added control and consistency most suppliers can't offer.</p>
+          </div>
+        </div>
+        <div class="wc-item reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div>
+            <h3>Wide delivery area</h3>
+            <p>We deliver across an expansive area throughout Virginia and West Virginia.</p>
+          </div>
+        </div>
+        <div class="wc-item reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.4 7 22l5-3 5 3-1.2-8.6"/></svg></div>
+          <div>
+            <h3>Three decades of trust</h3>
+            <p>Locally owned and operated since 1989, with deep roots serving the region's building trades.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

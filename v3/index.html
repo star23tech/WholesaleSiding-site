@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wholesale Siding Supply, Inc. | Explorer Layout | Roanoke, VA</title>
+<title>Wholesale Siding Supply, Inc. | Quote Builder Layout | Roanoke, VA</title>
 <meta name="description" content="Explore wholesale exterior building products, build a quote list, and submit a complete request in minutes. Interactive layout demo.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,7 +185,7 @@
   <span class="lbl">Layout demo:</span>
   <a href="../">Classic</a>
   <a href="../v2/">Catalog</a>
-  <a class="is-active" href="index.html">Explorer</a>
+  <a class="is-active" href="index.html">Quote Builder</a>
 </div>
 
 <!-- ===== Top utility bar ===== -->
@@ -251,7 +251,7 @@
 <!-- ===== Explorer ===== -->
 <section class="explorer" id="explore">
   <div class="wrap head">
-    <p class="eyebrow">Product Explorer</p>
+    <p class="eyebrow">Browse Products</p>
     <h2>Browse &amp; build your list</h2>
     <p class="lead center">Filter by category or search, then tap <b>Add to quote</b> on anything you need.</p>
   </div>
@@ -506,9 +506,10 @@
   /* ---- Add / remove from quote ---- */
   var bar = document.getElementById('quoteBar');
   var qCount = document.getElementById('qCount');
+  var builderInView = false; /* hide the floating bar while inside the wizard */
   function syncBar(){
     var n = Object.keys(selected).length;
-    qCount.textContent = n; bar.classList.toggle('show', n > 0);
+    qCount.textContent = n; bar.classList.toggle('show', n > 0 && !builderInView);
   }
   function setCardState(id, on){
     var card = document.querySelector('.x-card[data-id="'+id+'"]');
@@ -716,6 +717,15 @@
   nav.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
   });
+
+  /* Hide the floating quote bar while the builder section is on screen */
+  if('IntersectionObserver' in window){
+    var builderObs = new IntersectionObserver(function(entries){
+      builderInView = entries[0].isIntersecting;
+      syncBar();
+    }, {threshold:0});
+    builderObs.observe(document.getElementById('quote'));
+  }
 
   /* init */
   renderItems();

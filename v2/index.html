@@ -3,508 +3,724 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wholesale Siding Supply, Inc. | Trusted Building Supply | Roanoke, VA</title>
-<meta name="description" content="Since 1989, Wholesale Siding Supply has supplied building professionals across Virginia & West Virginia with quality exterior products: siding, windows, doors, gutters, decking and more. Request a quote today.">
+<title>Wholesale Siding Supply, Inc. | Exterior Building Products | Roanoke, VA</title>
+<meta name="description" content="Since 1989, Wholesale Siding Supply has supplied building professionals across Virginia and West Virginia with quality exterior products: siding, windows, doors, gutters, decking and more.">
+<meta property="og:title" content="Wholesale Siding Supply, Inc.">
+<meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!--
-  LAYOUT B (redesign) — "Trust & Lead-Gen"
-  Reference DNA: hero with an embedded quote form + trust badge, brand strip,
-  why-choose-us, about, visit/showroom with map, and customer reviews.
-
-  Color: page-level override of the shared design tokens to a deep forest
-  green + warm brass + cream palette (distinct from the navy/orange of v1/v3).
-  The override recolors shared components (buttons, header, footer, forms)
-  automatically; a few hardcoded oranges in the shared sheet are neutralized
-  below.
-
-  Reuses ../assets/styles.css for base components; layout-specific rules here.
--->
-<link rel="stylesheet" href="../assets/styles.css">
 <style>
-  /* ===== Palette override — forest green / brass / cream ===== */
-  :root{
-    --ink:#222a24;
-    --navy:#1f4536;        /* deep forest green — primary (headings, brand) */
-    --navy-deep:#13281f;   /* near-black green — topbar, footer, hero */
-    --steel:#3c6353;       /* pine — secondary / links */
-    --accent:#c09a4a;      /* brass — accents, stars, eyebrows */
-    --accent-dark:#9c7b34; /* darker brass */
-    --muted:#6c7166;       /* warm gray text */
-    --line:#e6e4d9;        /* warm border */
-    --bg:#ffffff;
-    --bg-soft:#f5f2ea;     /* warm cream */
-  }
-  /* Neutralize hardcoded oranges from the shared sheet */
-  .btn--primary{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(31,69,54,.26)}
-  .btn--primary:hover{background:#163528}
-  form input:focus,form textarea:focus,form select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(192,154,74,.2)}
-  .cta{background:linear-gradient(120deg,var(--navy),#2f5d49)}
-  .cta .btn--primary{background:var(--accent);color:#1c1a10}
-  .cta .btn--primary:hover{background:#d2ad5c}
-  .cta .btn--ghost{border-color:rgba(255,255,255,.8)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:#1d1c1a;background:#faf8f4;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
 
-  /* ===== Hero with embedded quote form ===== */
-  .v2hero{position:relative;color:#fff;background:var(--navy-deep);overflow:hidden}
-  .v2hero .bg{position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,34,26,.94) 0%,rgba(20,46,35,.84) 45%,rgba(31,69,54,.62) 100%),url('../assets/ws_header.png');background-size:cover;background-position:center}
-  .v2hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:66px 22px 74px}
-  .v2hero .eyebrow{color:var(--accent)}
-  .v2hero h1{color:#fff;font-size:clamp(2.05rem,4.5vw,3.25rem);font-weight:800;margin-bottom:.4em}
-  .v2hero p{color:#e6ece4;font-size:1.16rem;max-width:520px;margin-bottom:0}
-  .trust-row{display:flex;align-items:center;gap:1.5rem;margin-top:1.7rem;flex-wrap:wrap}
-  .trust-row .ti{display:flex;flex-direction:column;line-height:1.2}
-  .trust-row .ti b{font-family:var(--font-display);font-size:1.05rem;color:#fff}
-  .trust-row .ti span{font-size:.84rem;color:#b9c6bd}
-  .trust-row .sep{width:1px;height:34px;background:rgba(255,255,255,.18)}
-  .stars{display:inline-flex;gap:2px;color:var(--accent)}
-  .stars svg{width:18px;height:18px;fill:currentColor}
+:root{
+  --ink:#1d1c1a;
+  --navy:#1b2d45;
+  --accent:#c4622d;
+  --accent-dk:#a3501f;
+  --warm:#faf8f4;
+  --cream:#f0ebe2;
+  --muted:#6b6560;
+  --light:#a09890;
+  --line:#e4ddd4;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --r:6px;
+  --sh:0 4px 24px rgba(0,0,0,.09);
+  --sh-lg:0 12px 48px rgba(0,0,0,.16);
+}
 
-  .hero-form{background:#fff;border-radius:18px;padding:28px 28px 26px;box-shadow:0 26px 60px rgba(8,20,15,.4)}
-  .hero-form h3{font-size:1.35rem;margin:0 0 .2rem}
-  .hero-form .fnote{color:var(--muted);font-size:.92rem;margin:0 0 1.1rem}
-  .hero-form .form-note{font-size:.78rem}
+/* ---- NAV ---- */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .35s,box-shadow .35s}
+.site-nav .ni{display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto;padding:1.5rem 2rem;transition:padding .35s}
+.site-nav.scrolled{background:#fff;box-shadow:0 1px 0 var(--line)}
+.site-nav.scrolled .ni{padding:.85rem 2rem}
+.nav-brand{display:flex;align-items:center;gap:.75rem}
+.nav-brand .mark{width:36px;height:36px;border-radius:4px;background:var(--accent);color:#fff;font-family:var(--serif);font-size:.95rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-brand .bname{font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;line-height:1.2;transition:color .35s;display:block}
+.nav-brand .bsub{font-size:.62rem;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;display:block;transition:color .35s}
+.site-nav.scrolled .nav-brand .bname{color:var(--ink)}
+.site-nav.scrolled .nav-brand .bsub{color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.83rem;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:.01em;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.site-nav.scrolled .nav-links a{color:var(--muted)}
+.site-nav.scrolled .nav-links a:hover{color:var(--ink)}
+.nav-acts{display:flex;align-items:center;gap:.65rem}
+.btn-ngo{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.3);border-radius:var(--r);padding:.42rem .9rem;transition:all .2s}
+.btn-ngo:hover{color:#fff;border-color:rgba(255,255,255,.75)}
+.site-nav.scrolled .btn-ngo{color:var(--muted);border-color:var(--line)}
+.site-nav.scrolled .btn-ngo:hover{color:var(--ink);border-color:var(--ink)}
+.btn-ns{font-size:.78rem;font-weight:600;background:var(--accent);color:#fff;border-radius:var(--r);padding:.42rem 1rem;transition:background .2s}
+.btn-ns:hover{background:var(--accent-dk)}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.4rem}
+.nav-ham span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:background .35s}
+.site-nav.scrolled .nav-ham span{background:var(--ink)}
 
-  /* ===== Brand strip ===== */
-  .v2brands{padding:42px 0;border-bottom:1px solid var(--line);background:#fff}
-  .v2brands .lbl{text-align:center;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
-  .brand-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 34px}
-  .brand-logos img{height:40px;width:auto;object-fit:contain;opacity:.92;transition:opacity .15s ease,transform .15s ease}
-  .brand-logos img:hover{opacity:1;transform:translateY(-2px)}
+/* ---- MOBILE MENU ---- */
+.mob-menu{display:none;position:fixed;inset:0;background:#fff;z-index:250;flex-direction:column;padding:5rem 1.5rem 2rem;overflow-y:auto}
+.mob-menu.open{display:flex}
+.mob-menu nav a{display:block;font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--ink);padding:.75rem 0;border-bottom:1px solid var(--line)}
+.mob-menu .macts{margin-top:2rem;display:flex;flex-direction:column;gap:.75rem}
+.mob-menu .btn-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1}
 
-  /* ===== Why choose us (image + feature list) ===== */
-  .v2why{background:var(--bg-soft)}
-  .whychoose{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:6px}
-  .whychoose-img{border-radius:18px;min-height:480px;background-size:cover;background-position:center;background-color:var(--steel);box-shadow:var(--shadow)}
-  .wc-list{display:grid;gap:26px}
-  .wc-item{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
-  .wc-item .ic{width:50px;height:50px;border-radius:13px;background:rgba(192,154,74,.15);display:grid;place-items:center;flex:none}
-  .wc-item .ic svg{width:25px;height:25px;stroke:var(--accent);fill:none;stroke-width:2}
-  .wc-item h3{font-size:1.12rem;margin:0 0 .25rem}
-  .wc-item p{margin:0;color:var(--muted);font-size:.95rem}
+/* ---- HERO ---- */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;background:#111}
+.hero .bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1900&q=80');background-size:cover;background-position:center;opacity:.52}
+.hero .wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:8rem 2rem 5rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;width:100%}
+.ht .ey{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem}
+.ht h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,4rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1.2rem}
+.ht p{color:rgba(255,255,255,.72);font-size:1.02rem;line-height:1.75;max-width:500px;margin-bottom:2rem}
+.hacts{display:flex;gap:.8rem;flex-wrap:wrap}
 
-  /* ===== Visit / showroom ===== */
-  .v2visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
-  .v2visit .map{margin-top:0;min-height:330px}
-  .v2visit .map iframe{height:330px}
-  .visit-hours{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;margin-top:1.2rem;font-size:.96rem}
-  .visit-hours dt{font-family:var(--font-display);font-weight:700;color:var(--navy)}
-  .visit-hours dd{margin:0;color:var(--muted)}
+.btn-prim{display:inline-block;padding:.8rem 1.8rem;border-radius:var(--r);background:var(--accent);color:#fff;font-weight:600;font-size:.88rem;transition:background .2s,transform .15s}
+.btn-prim:hover{background:var(--accent-dk);transform:translateY(-1px)}
+.btn-ghost-w{display:inline-block;padding:.8rem 1.8rem;border-radius:var(--r);border:1.5px solid rgba(255,255,255,.45);color:#fff;font-weight:600;font-size:.88rem;transition:border-color .2s,background .2s}
+.btn-ghost-w:hover{border-color:rgba(255,255,255,.85);background:rgba(255,255,255,.07)}
+.btn-out{display:inline-block;padding:.75rem 1.6rem;border-radius:var(--r);border:1.5px solid var(--ink);color:var(--ink);font-weight:600;font-size:.85rem;transition:background .2s,color .2s}
+.btn-out:hover{background:var(--ink);color:#fff}
 
-  /* ===== Reviews ===== */
-  .v2reviews .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
-  .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
-  .rev .stars{margin-bottom:.8rem}
-  .rev p{color:var(--ink);font-size:.98rem;margin:0 0 1.1rem;flex:1}
-  .rev .who{font-family:var(--font-display);font-weight:700;color:var(--navy)}
-  .rev .who small{display:block;font-family:var(--font-body);font-weight:500;color:var(--muted);font-size:.82rem;margin-top:.1rem}
-  .reviews-foot{text-align:center;margin-top:30px;color:var(--muted);font-size:.95rem}
-  .reviews-foot .stars{vertical-align:middle}
+/* Quote card */
+.qcard{background:#fff;border-radius:12px;padding:2rem;box-shadow:var(--sh-lg)}
+.qcard h3{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:.25rem}
+.qcard .qsub{font-size:.8rem;color:var(--muted);margin-bottom:1.4rem}
+.qf{margin-bottom:.9rem}
+.qf label{display:block;font-size:.72rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;letter-spacing:.03em}
+.qf input,.qf select,.qf textarea{width:100%;padding:.58rem .82rem;border:1.5px solid var(--line);border-radius:var(--r);font-size:.83rem;font-family:var(--sans);color:var(--ink);background:#fff;transition:border-color .2s;outline:none}
+.qf input:focus,.qf select:focus,.qf textarea:focus{border-color:var(--accent)}
+.qf textarea{resize:vertical;min-height:70px}
+.qrow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.btn-qsub{width:100%;padding:.78rem;border-radius:var(--r);background:var(--accent);color:#fff;font-weight:600;font-size:.88rem;border:none;cursor:pointer;font-family:var(--sans);transition:background .2s}
+.btn-qsub:hover{background:var(--accent-dk)}
 
-  @media(max-width:900px){
-    .v2hero .wrap{grid-template-columns:1fr;gap:34px;padding:54px 22px 60px}
-    .hero-form{max-width:520px}
-    .whychoose{grid-template-columns:1fr;gap:30px}
-    .whychoose-img{min-height:300px;order:-1}
-    .v2visit .wrap{grid-template-columns:1fr;gap:30px}
-    .v2reviews .grid{grid-template-columns:1fr}
-  }
-  @media(max-width:560px){
-    .trust-row .sep{display:none}
-  }
+/* ---- TRUST BAR ---- */
+.tbar{background:var(--navy);padding:2rem 0}
+.tbar .wrap{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.tstat{text-align:center}
+.tstat .n{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:#fff;line-height:1;display:block}
+.tstat .l{font-size:.68rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.3rem;display:block}
+.tdiv{width:1px;height:36px;background:rgba(255,255,255,.14)}
+
+/* ---- SHARED SECTION STYLES ---- */
+.sec{padding:5rem 0}
+.sec--cream{background:var(--cream)}
+.sec--dark{background:var(--navy)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 2rem}
+.slabel{font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;display:block}
+.stitle{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.9rem}
+.stitle--w{color:#fff}
+.slead{font-size:.97rem;color:var(--muted);max-width:580px;line-height:1.75}
+.shead{margin-bottom:3rem}
+
+/* ---- PRODUCT CATEGORIES ---- */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.cat-card{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:4/5;background:#1a1a1a;cursor:pointer}
+.cat-card.feat{grid-column:span 2;aspect-ratio:16/7}
+.cat-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.72;transition:transform .55s,opacity .4s}
+.cat-card:hover .cat-bg{transform:scale(1.05);opacity:.6}
+.cat-body{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 1.5rem;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,transparent 100%)}
+.cat-tag{font-size:.67rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.35rem;display:block}
+.cat-card h3{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+.cat-card p{font-size:.8rem;color:rgba(255,255,255,.72);line-height:1.5;margin-bottom:.85rem;opacity:0;transition:opacity .3s}
+.cat-card:hover p{opacity:1}
+.cat-lnk{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:600;color:#fff;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:.12rem;transition:border-color .2s}
+.cat-lnk:hover{border-color:#fff}
+
+/* ---- WHY US ---- */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem 3rem}
+.wi{}
+.wnum{font-family:var(--serif);font-size:3.2rem;font-weight:700;color:var(--line);line-height:1;margin-bottom:.65rem;transition:color .3s}
+.wi:hover .wnum{color:var(--accent)}
+.wdiv{width:36px;height:2px;background:var(--accent);margin-bottom:.85rem}
+.wi h3{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.55rem}
+.wi p{font-size:.86rem;color:var(--muted);line-height:1.75}
+
+/* ---- ABOUT ---- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.aimg{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:3/4;background:#1a1a1a}
+.aimg img{width:100%;height:100%;object-fit:cover}
+.abadge{position:absolute;bottom:1.5rem;right:1.5rem;background:var(--accent);color:#fff;padding:1.1rem 1.4rem;border-radius:8px;font-family:var(--serif);text-align:center;box-shadow:var(--sh)}
+.abadge b{display:block;font-size:1.9rem;font-weight:700;line-height:1}
+.abadge span{font-size:.7rem;font-weight:500;opacity:.85;line-height:1.3;display:block;margin-top:.15rem}
+.abody p{font-size:.9rem;color:var(--muted);line-height:1.82;margin-bottom:.95rem}
+.aquote{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--navy);border-left:3px solid var(--accent);padding-left:1.2rem;margin:1.5rem 0}
+.abody .acts{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* ---- GALLERY ---- */
+.gal-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:270px 270px;gap:1rem}
+.gi{position:relative;overflow:hidden;border-radius:8px;background:#1a1a1a}
+.gi:first-child{grid-row:span 2}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .55s,opacity .4s}
+.gi:hover img{transform:scale(1.06);opacity:.75}
+.gi-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;opacity:0;transition:opacity .3s;background:linear-gradient(to top,rgba(0,0,0,.62),transparent)}
+.gi:hover .gi-ov{opacity:1}
+.gi-ov h4{font-family:var(--serif);color:#fff;font-size:.95rem;font-weight:700;margin-bottom:.15rem}
+.gi-ov span{font-size:.68rem;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.08em}
+
+/* ---- TESTIMONIALS ---- */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tcard{background:#fff;border-radius:10px;padding:1.8rem;box-shadow:0 2px 16px rgba(0,0,0,.06);border-top:3px solid var(--accent)}
+.stars{color:var(--accent);font-size:.88rem;margin-bottom:.9rem;letter-spacing:.04em}
+.tcard p{font-size:.86rem;color:var(--muted);line-height:1.78;margin-bottom:1.2rem;font-style:italic}
+.tcard .rev{font-size:.77rem;font-weight:600;color:var(--ink)}
+.tcard .role{font-size:.7rem;color:var(--light)}
+
+/* ---- BRANDS ---- */
+.brand-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.5rem 2.5rem}
+.brand-logo{opacity:.45;filter:grayscale(1);transition:opacity .3s,filter .3s}
+.brand-logo:hover{opacity:.75;filter:grayscale(0)}
+.brand-logo img{max-height:52px;width:auto}
+
+/* ---- CTA SECTION ---- */
+.ctasec{position:relative;background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1900&q=80');background-size:cover;background-position:center}
+.ctasec .ov{position:absolute;inset:0;background:rgba(27,45,69,.9)}
+.ctasec .wrap{position:relative;z-index:1;text-align:center;padding:6rem 2rem}
+.ctasec h2{font-family:var(--serif);font-size:clamp(2rem,4vw,2.9rem);color:#fff;font-weight:700;margin-bottom:1rem}
+.ctasec p{color:rgba(255,255,255,.7);font-size:.97rem;max-width:520px;margin:0 auto 2.2rem}
+.cacts{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.mapwrap{margin-top:3rem;border-radius:10px;overflow:hidden;max-width:800px;margin-left:auto;margin-right:auto}
+
+/* ---- FOOTER ---- */
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:4.5rem 0 2rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.fbrand .fmark{width:36px;height:36px;border-radius:4px;background:var(--accent);color:#fff;font-family:var(--serif);font-size:.95rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:.9rem}
+.fbrand .fname{font-family:var(--serif);font-size:1rem;color:#fff;font-weight:700;margin-bottom:.3rem}
+.fbrand > p{font-size:.8rem;line-height:1.65;max-width:250px;margin-bottom:1.2rem}
+.fcontact a{display:flex;align-items:center;gap:.45rem;color:rgba(255,255,255,.55);font-size:.8rem;margin-bottom:.5rem;transition:color .2s}
+.fcontact a:hover{color:#fff}
+footer h4{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.9rem}
+footer a{display:block;font-size:.8rem;color:rgba(255,255,255,.48);margin-bottom:.45rem;transition:color .2s}
+footer a:hover{color:#fff}
+.foot-hours{font-size:.78rem;line-height:1.85}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:1.5rem;font-size:.74rem;color:rgba(255,255,255,.28)}
+
+/* ---- REVEAL ---- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.rd1{transition-delay:.1s}
+.rd2{transition-delay:.22s}
+.rd3{transition-delay:.34s}
+
+/* ---- VERSION SWITCHER ---- */
+.vswitch{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:300;display:flex;align-items:center;gap:.2rem;background:rgba(14,36,56,.96);backdrop-filter:blur(6px);color:#fff;padding:.45rem .55rem;border-radius:999px;font-size:.72rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.35)}
+.vswitch .lbl{padding:.3rem .6rem;opacity:.45;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase}
+.vswitch a{padding:.3rem .75rem;border-radius:999px;color:rgba(255,255,255,.6);transition:all .2s}
+.vswitch a:hover{color:#fff}
+.vswitch a.is-active{background:var(--accent);color:#fff}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1024px){
+  .hero .wrap{grid-template-columns:1fr;max-width:660px}
+  .qcard{display:none}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-card.feat{grid-column:span 1;aspect-ratio:4/5}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .aimg{aspect-ratio:16/9}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
+  .gi:first-child{grid-row:span 1;grid-column:span 2}
+  .test-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:768px){
+  .nav-links,.nav-acts{display:none}
+  .nav-ham{display:flex}
+  .sec{padding:3.5rem 0}
+  .hero .wrap{padding:7rem 1.5rem 4rem}
+  .ht h1{font-size:2.3rem}
+  .tbar .wrap{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:2rem}
+  .tdiv{display:none}
+  .cat-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr;gap:2rem}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px 160px}
+  .gi:first-child{grid-row:span 1;grid-column:span 2}
+  .test-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+  .wrap{padding:0 1.25rem}
+  .vswitch .lbl{display:none}
+}
 </style>
-<script>
-  // Always land at the top when arriving on this page (e.g. via the version
-  // switcher), unless the URL points at a specific #section.
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  window.addEventListener('pageshow', function(){ if (!location.hash) window.scrollTo(0, 0); });
-</script>
 </head>
 <body>
 
-<!-- ===== Layout-version switcher (review aid — remove before launch) ===== -->
+<!-- ===== Layout switcher ===== -->
 <div class="vswitch" role="navigation" aria-label="Layout versions">
-  <span class="lbl">Layout demo:</span>
-  <a href="../">Original</a>
+  <span class="lbl">Layout:</span>
+  <a href="../index.html">Original</a>
   <a class="is-active" href="index.html">Version 2</a>
   <a href="../v3/">Quote Builder</a>
 </div>
 
-<!-- ===== Top utility bar ===== -->
-<div class="topbar">
-  <div class="wrap">
-    <span class="tag">Serving building professionals across Virginia &amp; West Virginia since 1989</span>
-    <span class="links">
-      <span class="phone">📞 <a href="tel:+15402651835">(540) 265-1835</a></span>
-      <span>Toll-free <a href="tel:+18009501838">(800) 950-1838</a></span>
-    </span>
+<!-- ===== Mobile menu ===== -->
+<div class="mob-menu" id="mobMenu">
+  <button class="btn-close" id="mobClose" aria-label="Close menu">&#215;</button>
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#why">Why Us</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="macts">
+    <a class="btn-prim" href="#quote" style="text-align:center">Get a Quote</a>
+    <a class="btn-out" href="tel:+15402651835" style="text-align:center">(540) 265-1835</a>
   </div>
 </div>
 
-<!-- ===== Header / Navigation ===== -->
-<header class="site">
-  <div class="nav">
-    <a class="brand" href="../" aria-label="Wholesale Siding Supply home">
-      <span class="mark">WS</span>
-      <span>Wholesale Siding Supply<small>Everything exterior, from the gutters down</small></span>
+<!-- ===== Navigation ===== -->
+<header class="site-nav" id="siteNav">
+  <div class="ni">
+    <a class="nav-brand" href="index.html" aria-label="Wholesale Siding Supply home">
+      <div class="mark">WS</div>
+      <div>
+        <span class="bname">Wholesale Siding Supply</span>
+        <span class="bsub">Roanoke, VA &middot; Est. 1989</span>
+      </div>
     </a>
-    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="main" id="primaryNav">
-      <ul>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#why">Why Us</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Visit Us</a></li>
-      </ul>
-    </nav>
-    <div class="nav-cta">
-      <a class="btn btn--outline btn-quote" href="#quote">Get a Quote</a>
-      <a class="btn btn--primary" href="tel:+15402651835">
-        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-        Call
-      </a>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#why">Why Us</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
     </div>
+    <div class="nav-acts">
+      <a class="btn-ngo" href="tel:+15402651835">(540) 265-1835</a>
+      <a class="btn-ns" href="#quote">Get a Quote</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<!-- ===== Hero with embedded quote form ===== -->
-<section class="v2hero" id="home">
+<!-- ===== Hero ===== -->
+<section class="hero" id="home">
   <div class="bg"></div>
   <div class="wrap">
-    <div>
-      <p class="eyebrow">Locally owned &amp; operated since 1989</p>
-      <h1>Your wholesale source for exterior building products.</h1>
-      <p>Siding, windows, doors, gutters, decking and more: quality materials and trusted brands for contractors and building professionals across Virginia &amp; West Virginia.</p>
-      <div class="trust-row">
-        <div class="ti">
-          <span class="stars" aria-label="5 out of 5 stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </span>
-          <span>Trusted by local builders</span>
-        </div>
-        <div class="sep"></div>
-        <div class="ti"><b>35+ years</b><span>Serving the trades</span></div>
-        <div class="sep"></div>
-        <div class="ti"><b>VA &amp; WV</b><span>Expansive delivery area</span></div>
+    <div class="ht">
+      <p class="ey">Wholesale Exterior Products &middot; Roanoke, VA</p>
+      <h1>Building materials<br>you can trust.</h1>
+      <p>Siding, windows, doors, decking, gutters, and more, supplied by the region's most trusted exterior building products source since 1989.</p>
+      <div class="hacts">
+        <a class="btn-prim" href="#products">Browse Products</a>
+        <a class="btn-ghost-w" href="#contact">Visit the Showroom</a>
       </div>
     </div>
 
-    <!-- Embedded quote form -->
-    <div class="hero-form form-card" id="quote">
+    <!-- Floating quote card -->
+    <div class="qcard" id="quote">
       <h3>Request a Quote</h3>
-      <p class="fnote">Tell us about your project and get a quote for exactly what your job needs.</p>
-      <form id="quoteForm" novalidate>
-        <div class="row">
-          <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" autocomplete="tel" required></div>
+      <p class="qsub">Tell us about your project and we'll be in touch.</p>
+      <form id="heroForm" novalidate>
+        <div class="qrow">
+          <div class="qf">
+            <label for="hName">Name</label>
+            <input id="hName" type="text" placeholder="Your name" autocomplete="name">
+          </div>
+          <div class="qf">
+            <label for="hPhone">Phone</label>
+            <input id="hPhone" type="tel" placeholder="(540) 000-0000" autocomplete="tel">
+          </div>
         </div>
-        <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
-        <div class="field"><label for="message">What does your project need?</label><textarea id="message" name="message" required></textarea></div>
-        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Request a Quote</button>
-        <p class="form-note">Your details are kept private and used only for your quote.</p>
-        <div class="success" id="formSuccess">Thanks! Your request has been submitted. We'll be in touch.</div>
+        <div class="qf">
+          <label for="hProd">Product Interest</label>
+          <select id="hProd">
+            <option value="">Select a category...</option>
+            <option>Siding</option>
+            <option>Windows &amp; Doors</option>
+            <option>Decking &amp; Railing</option>
+            <option>Gutters &amp; Accessories</option>
+            <option>Metal Roofing</option>
+            <option>Stone &amp; Trim</option>
+            <option>Other / Multiple</option>
+          </select>
+        </div>
+        <div class="qf">
+          <label for="hEmail">Email</label>
+          <input id="hEmail" type="email" placeholder="your@email.com" autocomplete="email">
+        </div>
+        <div class="qf">
+          <label for="hNotes">Notes <span style="font-weight:400;color:var(--light)">(optional)</span></label>
+          <textarea id="hNotes" placeholder="Briefly describe your project..."></textarea>
+        </div>
+        <button type="submit" class="btn-qsub">Send Quote Request</button>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ===== Brand strip ===== -->
-<section class="v2brands">
+<!-- ===== Trust bar ===== -->
+<div class="tbar">
   <div class="wrap">
-    <p class="lbl">Quality lines from leading manufacturers</p>
-    <div class="brand-logos">
-      <img src="../assets/stylecrest.jpg" alt="StyleCrest">
-      <img src="../assets/alside.jpg" alt="Alside">
-      <img src="../assets/jameshardy.jpg" alt="James Hardie">
-      <img src="../assets/allura.jpg" alt="Allura">
-      <img src="../assets/nichiha.jpg" alt="Nichiha">
-      <img src="../assets/lpbuildingproducts.jpg" alt="LP SmartSide">
-      <img src="../assets/thefoundry.jpg" alt="The Foundry">
-      <img src="../assets/stonecraft.jpg" alt="StoneCraft">
+    <div class="tstat">
+      <span class="n">35+</span>
+      <span class="l">Years in Business</span>
+    </div>
+    <div class="tdiv"></div>
+    <div class="tstat">
+      <span class="n">12+</span>
+      <span class="l">Product Lines</span>
+    </div>
+    <div class="tdiv"></div>
+    <div class="tstat">
+      <span class="n">VA &amp; WV</span>
+      <span class="l">Service Area</span>
+    </div>
+    <div class="tdiv"></div>
+    <div class="tstat">
+      <span class="n">Local</span>
+      <span class="l">Family Owned</span>
+    </div>
+    <div class="tdiv"></div>
+    <div class="tstat">
+      <span class="n">Est.</span>
+      <span class="l">1989</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Product Categories ===== -->
+<section class="sec" id="products">
+  <div class="wrap">
+    <div class="shead">
+      <span class="slabel reveal">What We Carry</span>
+      <h2 class="stitle reveal rd1">Everything exterior, organized by category</h2>
+      <p class="slead reveal rd2">A complete line of residential and commercial exterior products: quality materials, fully supported, ready for your next job.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card feat reveal">
+        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="cat-body">
+          <span class="cat-tag">Most Popular</span>
+          <h3>Siding</h3>
+          <p>Vinyl, fiber cement, engineered wood, metal, and manufactured stone from StyleCrest, James Hardie, LP SmartSide, and more.</p>
+          <a class="cat-lnk" href="../siding.html">Shop Siding &rarr;</a>
+        </div>
+      </div>
+      <div class="cat-card reveal rd1">
+        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="cat-body">
+          <span class="cat-tag">Windows &amp; Doors</span>
+          <h3>Windows &amp; Doors</h3>
+          <p>Energy-efficient windows and exterior doors for residential and commercial applications.</p>
+          <a class="cat-lnk" href="#">View Products &rarr;</a>
+        </div>
+      </div>
+      <div class="cat-card reveal rd2">
+        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="cat-body">
+          <span class="cat-tag">Outdoor Living</span>
+          <h3>Decking &amp; Railing</h3>
+          <p>Composite, PVC, and wood-alternative decking systems, plus railing from leading manufacturers.</p>
+          <a class="cat-lnk" href="#">View Products &rarr;</a>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="cat-body">
+          <span class="cat-tag">Drainage</span>
+          <h3>Gutters &amp; Accessories</h3>
+          <p>In-house produced gutter coil plus accessories, hangers, and specialty profiles.</p>
+          <a class="cat-lnk" href="#">View Products &rarr;</a>
+        </div>
+      </div>
+      <div class="cat-card reveal rd1">
+        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="cat-body">
+          <span class="cat-tag">Roofing</span>
+          <h3>Metal Roofing</h3>
+          <p>Residential and agricultural metal roofing panels, standing seam, and accessories from ABC and Marco Metals.</p>
+          <a class="cat-lnk" href="#">View Products &rarr;</a>
+        </div>
+      </div>
+      <div class="cat-card reveal rd2">
+        <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1564182842519-8a3b2af3e228?auto=format&fit=crop&w=800&q=80')"></div>
+        <div class="cat-body">
+          <span class="cat-tag">Accents</span>
+          <h3>Stone &amp; Trim</h3>
+          <p>Manufactured stone veneer, trim boards, and architectural accents that complete any exterior project.</p>
+          <a class="cat-lnk" href="#">View Products &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Products ===== -->
-<section class="section products" id="products">
+<!-- ===== Why Us ===== -->
+<section class="sec sec--cream" id="why">
   <div class="wrap">
-    <div class="section-head center">
-      <p class="eyebrow">What We Carry</p>
-      <h2>Everything exterior, organized by category</h2>
-      <p class="lead">A complete line of residential and commercial exterior products: quality materials, fully supported, ready for your next job.</p>
+    <div class="shead">
+      <span class="slabel reveal">Why Choose Us</span>
+      <h2 class="stitle reveal rd1">What sets us apart</h2>
+      <p class="slead reveal rd2">Building professionals across Virginia and West Virginia have relied on us since 1989. Here's why they keep coming back.</p>
     </div>
-    <div class="grid">
-      <a class="tile reveal" href="../siding.html">
-        <span class="img" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=700&q=80')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M3 12h18M3 16h18"/></svg></span><h3>Siding</h3><span class="more">Vinyl, insulated &amp; specialty →</span></span>
-      </a>
-      <a class="tile reveal" href="#quote">
-        <span class="img" style="background-image:url('../assets/window.png')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/></svg></span><h3>Windows</h3><span class="more">Energy-efficient →</span></span>
-      </a>
-      <a class="tile reveal" href="#quote">
-        <span class="img" style="background-image:url('../assets/door.png')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="1"/><circle cx="15.5" cy="12" r="1"/></svg></span><h3>Doors</h3><span class="more">Entry, patio &amp; storm →</span></span>
-      </a>
-      <a class="tile reveal" href="#quote">
-        <span class="img" style="background-image:url('../assets/gutter.png')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h18l-2 4H5z"/><path d="M5 11v8M19 11v8M3 19h18"/></svg></span><h3>Gutters</h3><span class="more">Made in our facility →</span></span>
-      </a>
-      <a class="tile reveal" href="#quote">
-        <span class="img" style="background-image:url('../assets/deck.png')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 14h18M6 8v6M12 8v6M18 8v6"/></svg></span><h3>Decking</h3><span class="more">Low-maintenance →</span></span>
-      </a>
-      <a class="tile reveal" href="#quote">
-        <span class="img" style="background-image:url('../assets/fence.png')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V8M20 20V8M4 12h16M8 12V8M12 12V8M16 12V8M2 8h20"/></svg></span><h3>Railing &amp; Fencing</h3><span class="more">Function + curb appeal →</span></span>
-      </a>
-      <a class="tile reveal" href="#quote">
-        <span class="img" style="background-image:url('../assets/trim.png')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M5 6v12M19 6v12M5 6h14M5 18h14"/></svg></span><h3>Trim &amp; Accessories</h3><span class="more">Shutters, columns &amp; more →</span></span>
-      </a>
-      <a class="tile reveal" href="#quote">
-        <span class="img" style="background-image:url('https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=700&q=80')"></span>
-        <span class="body"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 7l3-3 4 4-3 3M14 7l-9 9-2 5 5-2 9-9M14 7l3 3"/></svg></span><h3>Tools &amp; Equipment</h3><span class="more">What the pros rely on →</span></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Why choose us ===== -->
-<section class="section v2why" id="why">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="eyebrow">Why Choose Wholesale Siding Supply?</p>
-      <h2>A trusted partner for building professionals</h2>
-      <p class="lead">Our focus is quality materials, the right selection, and the kind of service that keeps building professionals coming back, whether you run a small crew or a large production operation across Virginia and West Virginia.</p>
-    </div>
-    <div class="whychoose">
-      <!-- TODO: replace with David's real photo (storefront, warehouse, team, or a finished project) -->
-      <div class="whychoose-img reveal" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1100&q=80')" role="img" aria-label="Quality exterior building products"></div>
-      <div class="wc-list">
-        <div class="wc-item reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg></div>
-          <div>
-            <h3>Premium brands</h3>
-            <p>The highest-quality siding, windows, doors, decking and more, from the manufacturers building professionals trust.</p>
-          </div>
-        </div>
-        <div class="wc-item reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM7 7a3 3 0 1 0-6 0 3 3 0 0 0 6 0z"/></svg></div>
-          <div>
-            <h3>Selection that delivers</h3>
-            <p>Extensive in-stock inventory plus special-order options, so you get exactly what the job needs.</p>
-          </div>
-        </div>
-        <div class="wc-item reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l4 2V9l4 2V9l4 2v10M9 21v-4h2v4"/></svg></div>
-          <div>
-            <h3>Our own gutter facility</h3>
-            <p>Since 2008 we produce our own gutter accessories in-house, for added control and consistency most suppliers can't offer.</p>
-          </div>
-        </div>
-        <div class="wc-item reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-          <div>
-            <h3>Wide delivery area</h3>
-            <p>We deliver across an expansive area throughout Virginia and West Virginia.</p>
-          </div>
-        </div>
-        <div class="wc-item reveal">
-          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.4 7 22l5-3 5 3-1.2-8.6"/></svg></div>
-          <div>
-            <h3>Three decades of trust</h3>
-            <p>Locally owned and operated since 1989, with deep roots serving the region's building trades.</p>
-          </div>
-        </div>
+    <div class="why-grid">
+      <div class="wi reveal">
+        <div class="wnum">01</div>
+        <div class="wdiv"></div>
+        <h3>Premium manufacturer brands</h3>
+        <p>We stock and special-order from the manufacturers contractors trust: StyleCrest, Alside, James Hardie, LP SmartSide, ABC, Gentek, StoneCraft, and more.</p>
+      </div>
+      <div class="wi reveal rd1">
+        <div class="wnum">02</div>
+        <div class="wdiv"></div>
+        <h3>Contractor pricing on every order</h3>
+        <p>We're a wholesale supplier, which means professional pricing for contractors, remodelers, and production builders regardless of order volume.</p>
+      </div>
+      <div class="wi reveal rd2">
+        <div class="wnum">03</div>
+        <div class="wdiv"></div>
+        <h3>In-house gutter production</h3>
+        <p>Our own gutter facility means we produce coil and accessories on-site, giving us more control over quality, availability, and lead times than a typical distributor.</p>
+      </div>
+      <div class="wi reveal">
+        <div class="wnum">04</div>
+        <div class="wdiv"></div>
+        <h3>Expansive in-stock selection</h3>
+        <p>Deep inventory across siding, windows, doors, decking, gutters, metal roofing, and trim. When we don't stock it, we'll special-order from our manufacturer partners.</p>
+      </div>
+      <div class="wi reveal rd1">
+        <div class="wnum">05</div>
+        <div class="wdiv"></div>
+        <h3>Regional delivery coverage</h3>
+        <p>Serving Virginia and West Virginia with delivery to job sites across the region. Call ahead to confirm scheduling and routing for your project.</p>
+      </div>
+      <div class="wi reveal rd2">
+        <div class="wnum">06</div>
+        <div class="wdiv"></div>
+        <h3>Locally owned since 1989</h3>
+        <p>Not a big-box chain or national distributor. A family-owned business with more than three decades of relationships, experience, and expertise in this region.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== About ===== -->
-<section class="section" id="about">
+<section class="sec" id="about">
   <div class="wrap">
-    <div class="reveal" style="max-width:700px">
-      <p class="eyebrow">About Us</p>
-      <h2>Three decades of exterior expertise</h2>
-      <p>Wholesale Siding Supply, Inc. is a locally owned and operated business founded in 1989 in Roanoke, Virginia. We take pride in distributing exterior products for building professionals, and within two years of opening we'd already grown to expand our product line.</p>
-      <p>Today we serve an expansive delivery area across Virginia and West Virginia, with both in-stock and special-order selections.</p>
-      <p style="font-family:var(--font-display);font-style:italic;color:var(--steel);font-weight:600;font-size:1.1rem;margin-top:1.2rem">"We're serious about service."</p>
-      <div style="margin-top:1.4rem;display:flex;gap:.8rem;flex-wrap:wrap">
-        <a class="btn btn--primary" href="#quote">Get a Quote</a>
-        <a class="btn btn--outline" href="#products">Browse Products</a>
+    <div class="about-grid">
+      <div class="aimg reveal">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Building materials and craftsmanship" loading="lazy">
+        <div class="abadge">
+          <b>35+</b>
+          <span>Years Serving<br>the Region</span>
+        </div>
+      </div>
+      <div class="abody reveal rd1">
+        <span class="slabel">About Us</span>
+        <h2 class="stitle">A trusted name in exterior building products</h2>
+        <blockquote class="aquote">"We're serious about service."</blockquote>
+        <p>Wholesale Siding Supply, Inc. was founded in 1989 in Roanoke, Virginia. For more than three decades, we've supplied building professionals across Virginia and West Virginia with quality exterior products from the manufacturers they know and trust.</p>
+        <p>We're a locally owned, family-operated wholesale supplier. That means you'll work with people who know the products, know the region, and are focused on making sure you have what you need for your project.</p>
+        <p>From our in-house gutter production facility to our relationships with leading manufacturers, we're built to serve contractors, builders, and remodelers.</p>
+        <div class="acts">
+          <a class="btn-prim" href="#quote">Get a Quote</a>
+          <a class="btn-out" href="#products">Browse Products</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Visit / showroom ===== -->
-<section class="section section--soft v2visit" id="contact">
+<!-- ===== Gallery ===== -->
+<section class="sec sec--cream" id="gallery">
   <div class="wrap">
-    <div>
-      <p class="eyebrow">Visit Us</p>
-      <h2>Stop by our Roanoke location</h2>
-      <p class="lead" style="margin-bottom:0">We've been a trusted building supply source in the Roanoke Valley since 1989. Come see us, or reach out and we'll point you to exactly what your project needs.</p>
-      <div class="info-block" style="margin-top:1.4rem">
-        <div class="info-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>2131 Plantation Rd NE<br>Roanoke, VA 24012</span></div>
-        <div class="info-row"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><a href="tel:+15402651835">(540) 265-1835</a> · Toll-free <a href="tel:+18009501838">(800) 950-1838</a></span></div>
-        <div class="info-row"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span><a href="mailto:sales@wssinc.biz">sales@wssinc.biz</a></span></div>
-      </div>
-      <dl class="visit-hours">
-        <dt>Mon–Fri</dt><dd>7:30 AM – 4:30 PM</dd>
-        <dt>Sat–Sun</dt><dd>Closed</dd>
-      </dl>
+    <div class="shead">
+      <span class="slabel reveal">Project Inspiration</span>
+      <h2 class="stitle reveal rd1">Finished work worth showing off</h2>
+      <p class="slead reveal rd2">These are the kinds of results our products help make possible.</p>
     </div>
-    <div class="map">
+    <div class="gal-grid">
+      <div class="gi reveal">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80" alt="Modern home exterior" loading="lazy">
+        <div class="gi-ov"><h4>Modern Exterior</h4><span>Fiber Cement Siding</span></div>
+      </div>
+      <div class="gi reveal rd1">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" alt="Luxury residential build" loading="lazy">
+        <div class="gi-ov"><h4>Residential Build</h4><span>Vinyl Siding + Trim</span></div>
+      </div>
+      <div class="gi reveal rd2">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80" alt="Craftsman remodel" loading="lazy">
+        <div class="gi-ov"><h4>Craftsman Remodel</h4><span>LP SmartSide</span></div>
+      </div>
+      <div class="gi reveal rd1">
+        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=700&q=80" alt="Contemporary build" loading="lazy">
+        <div class="gi-ov"><h4>Contemporary Build</h4><span>Metal Panels + Stone</span></div>
+      </div>
+      <div class="gi reveal rd2">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="New construction exterior" loading="lazy">
+        <div class="gi-ov"><h4>New Construction</h4><span>Windows + Siding</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Testimonials ===== -->
+<!-- TODO: replace with real reviews from David before launch -->
+<section class="sec" id="testimonials">
+  <div class="wrap">
+    <div class="shead">
+      <span class="slabel reveal">What Builders Say</span>
+      <h2 class="stitle reveal rd1">Trusted by contractors across the region</h2>
+      <p class="slead reveal rd2">A reputation built one project at a time. Here's what building professionals say about working with us.</p>
+    </div>
+    <div class="test-grid">
+      <div class="tcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We've been ordering siding and gutters from Wholesale Siding Supply for years. They always have what we need, and when they don't, they get it. Good people, fair prices, no runaround."</p>
+        <div class="rev">M. Burnett</div>
+        <div class="role">General Contractor, Roanoke VA</div>
+      </div>
+      <div class="tcard reveal rd1">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"As a remodeling contractor, I need reliable supply on short notice. Wholesale Siding Supply has been that for us. Solid inventory and staff who know the products."</p>
+        <div class="rev">T. Crawford</div>
+        <div class="role">Remodeling Contractor, Salem VA</div>
+      </div>
+      <div class="tcard reveal rd2">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Best supplier in the region for exterior materials. We spec James Hardie and LP SmartSide on most of our builds and they always come through."</p>
+        <div class="rev">R. Dalton</div>
+        <div class="role">Production Builder, Lynchburg VA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA + Contact ===== -->
+<section class="ctasec" id="contact">
+  <div class="ov"></div>
+  <div class="wrap">
+    <span class="slabel" style="color:var(--accent)">Ready to Get Started?</span>
+    <h2>Visit the showroom or request a quote</h2>
+    <p>We're at 2131 Plantation Rd NE, Roanoke VA 24012. Come in, call, or send us your project details.</p>
+    <div class="cacts">
+      <a class="btn-prim" href="#quote">Request a Quote</a>
+      <a class="btn-ghost-w" href="tel:+15402651835">Call (540) 265-1835</a>
+    </div>
+    <div class="mapwrap">
       <iframe
         title="Wholesale Siding Supply location in Roanoke, VA"
         src="https://www.google.com/maps?q=2131%20Plantation%20Rd%20NE%2C%20Roanoke%2C%20VA%2024012&output=embed"
-        width="100%" style="border:0;display:block" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Reviews =====
-     TODO: replace with David's real customer reviews. These are placeholder
-     testimonials for layout only — do not present as real until confirmed. -->
-<section class="section v2reviews" id="reviews">
-  <div class="wrap">
-    <div class="section-head center">
-      <p class="eyebrow">What Builders Say</p>
-      <h2>Trusted by contractors across the region</h2>
-      <p class="lead">A reputation built one project at a time. Here's what building professionals say about working with us.</p>
-    </div>
-    <div class="grid">
-      <div class="rev reveal">
-        <span class="stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </span>
-        <p>"My go-to for siding and trim on every job. They always have what I need in stock, and if they don't, they get it quick. Pricing keeps my bids competitive."</p>
-        <div class="who">Mark T.<small>Remodeling contractor, Roanoke</small></div>
-      </div>
-      <div class="rev reveal">
-        <span class="stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </span>
-        <p>"Great selection and people who actually know building products. They helped me sort out the right gutter and decking package for a custom home build."</p>
-        <div class="who">Dana R.<small>General contractor, New River Valley</small></div>
-      </div>
-      <div class="rev reveal">
-        <span class="stars" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </span>
-        <p>"Been buying from them for years. Reliable, fair, and they treat a small crew the same as the big builders. That's why I keep coming back."</p>
-        <div class="who">Carlos M.<small>Exterior specialist, Salem</small></div>
-      </div>
-    </div>
-    <p class="reviews-foot">
-      <span class="stars" aria-label="5 out of 5 stars">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </span>
-      &nbsp;Rated 5 stars by the builders we serve.
-    </p>
-  </div>
-</section>
-
-<!-- ===== CTA band ===== -->
-<section class="section cta">
-  <div class="wrap">
-    <h2>Ready to start your next project?</h2>
-    <p>Tell us what you need and get a quote for exactly what your project calls for. Prefer to talk it through? We're a call away.</p>
-    <div class="actions">
-      <a class="btn btn--primary" href="#quote">Request a Quote</a>
-      <a class="btn btn--ghost" href="tel:+15402651835">Call (540) 265-1835</a>
+        width="100%" height="300" style="border:0;display:block" loading="lazy"
+        allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
 
 <!-- ===== Footer ===== -->
-<footer class="site">
+<footer>
   <div class="wrap">
-    <div class="cols">
-      <div>
-        <div class="brand" style="color:#fff;margin-bottom:.7rem"><span class="mark">WS</span><span style="color:#fff">Wholesale Siding Supply, Inc.</span></div>
-        <p class="tagline">"Everything exterior for your home, from the gutters down."</p>
-        <p style="margin:0">2131 Plantation Rd NE<br>Roanoke, VA 24012</p>
+    <div class="foot-grid">
+      <div class="fbrand">
+        <div class="fmark">WS</div>
+        <div class="fname">Wholesale Siding Supply, Inc.</div>
+        <p>Everything exterior for your home, from the gutters down. Serving building professionals across Virginia and West Virginia since 1989.</p>
+        <div class="fcontact">
+          <a href="tel:+15402651835">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            (540) 265-1835
+          </a>
+          <a href="tel:+18009501838">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Toll-free (800) 950-1838
+          </a>
+          <a href="mailto:sales@wssinc.biz">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+            sales@wssinc.biz
+          </a>
+        </div>
       </div>
       <div>
         <h4>Products</h4>
-        <a href="../siding.html">Siding</a><a href="#products">Windows</a><a href="#products">Doors</a><a href="#products">Gutters</a><a href="#products">Decking</a>
+        <a href="../siding.html">Siding</a>
+        <a href="#">Windows &amp; Doors</a>
+        <a href="#">Decking &amp; Railing</a>
+        <a href="#">Gutters &amp; Accessories</a>
+        <a href="#">Metal Roofing</a>
+        <a href="#">Stone &amp; Trim</a>
+        <a href="#">Tools &amp; Equipment</a>
       </div>
       <div>
         <h4>Company</h4>
-        <a href="#about">About</a><a href="#why">Why Us</a><a href="#reviews">Reviews</a><a href="#contact">Visit Us</a>
+        <a href="#about">About</a>
+        <a href="#why">Why Us</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
       </div>
       <div>
-        <h4>Contact</h4>
-        <a href="tel:+15402651835">(540) 265-1835</a>
-        <a href="tel:+18009501838">Toll-free (800) 950-1838</a>
-        <a href="mailto:sales@wssinc.biz">Email us</a>
+        <h4>Visit Us</h4>
+        <a href="https://maps.google.com/?q=2131+Plantation+Rd+NE,+Roanoke+VA+24012" target="_blank" rel="noopener" style="line-height:1.6">2131 Plantation Rd NE<br>Roanoke, VA 24012</a>
+        <div style="margin-top:1.1rem">
+          <h4>Hours</h4>
+          <div class="foot-hours" style="color:rgba(255,255,255,.42)">
+            Mon &ndash; Fri: 7:00 AM &ndash; 5:00 PM<br>
+            Saturday: By appointment<br>
+            Sunday: Closed
+          </div>
+        </div>
       </div>
     </div>
-    <div class="legal">
-      <span>&copy; <span id="year">2026</span> Wholesale Siding Supply, Inc. All rights reserved.</span>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr">2026</span> Wholesale Siding Supply, Inc. All rights reserved.</span>
       <span>Serving Virginia &amp; West Virginia since 1989</span>
     </div>
   </div>
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.addEventListener('pageshow', function(){ if(!location.hash) window.scrollTo(0,0); });
 
-  // Mobile nav toggle
-  var toggle = document.querySelector('.menu-toggle');
-  var nav = document.getElementById('primaryNav');
-  toggle.addEventListener('click', function(){
-    var open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
-  });
+// Nav: transparent -> solid on scroll
+var nav = document.getElementById('siteNav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
 
-  // Reveal-on-scroll
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-  }
+// Mobile menu
+var ham = document.getElementById('navHam');
+var mob = document.getElementById('mobMenu');
+var cls = document.getElementById('mobClose');
+function openMob(){ mob.classList.add('open'); document.body.style.overflow='hidden'; ham.setAttribute('aria-expanded','true'); }
+function closeMob(){ mob.classList.remove('open'); document.body.style.overflow=''; ham.setAttribute('aria-expanded','false'); }
+ham.addEventListener('click', openMob);
+cls.addEventListener('click', closeMob);
+mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMob); });
 
-  // Demo form handler (replace with a form service to reach the shared mailbox)
-  document.getElementById('quoteForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!this.checkValidity()){ this.reportValidity(); return; }
-    document.getElementById('formSuccess').style.display = 'block';
-    this.reset();
-  });
+// Copyright year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Reveal on scroll
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+
+// Quote form
+document.getElementById('heroForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  this.innerHTML = [
+    '<div style="text-align:center;padding:2.5rem 1rem">',
+    '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c4622d" stroke-width="1.5" style="margin:0 auto 1rem;display:block">',
+    '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+    '</svg>',
+    '<h3 style="font-family:Playfair Display,serif;color:#1d1c1a;margin-bottom:.4rem">Request Received</h3>',
+    '<p style="font-size:.83rem;color:#6b6560;line-height:1.6">Thanks! We\'ll be in touch about your project.</p>',
+    '</div>'
+  ].join('');
+});
 </script>
 </body>
 </html>

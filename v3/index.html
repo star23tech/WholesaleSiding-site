@@ -177,6 +177,12 @@
   @media(max-width:760px){.x-grid{grid-template-columns:repeat(2,1fr)}.quote-bar{bottom:70px;left:12px;right:12px;transform:translateY(160%);width:auto}.quote-bar.show{transform:translateY(0)}.step-body,.step-nav{padding-left:20px;padding-right:20px}}
   @media(max-width:460px){.x-grid{grid-template-columns:1fr}}
 </style>
+<script>
+  // Always land at the top when arriving on this page (e.g. via the version
+  // switcher), unless the URL points at a specific #section.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('pageshow', function(){ if (!location.hash) window.scrollTo(0, 0); });
+</script>
 </head>
 <body>
 
@@ -581,7 +587,7 @@
     f.querySelector('input').required = !pickup;
   }
 
-  function goStep(n){
+  function goStep(n, doScroll){
     step = n;
     panes.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-pane') === String(n)); });
     stepEls.forEach(function(s){
@@ -591,7 +597,7 @@
     });
     btnBack.hidden = n === 1;
     btnNext.innerHTML = n === 4 ? 'Submit request &rarr;' : 'Continue &rarr;';
-    document.getElementById('stepBar').scrollIntoView({behavior:'smooth',block:'nearest'});
+    if(doScroll) document.getElementById('stepBar').scrollIntoView({behavior:'smooth',block:'nearest'});
   }
 
   function validateStep(n){
@@ -610,10 +616,10 @@
   }
 
   btnNext.addEventListener('click', function(){
-    if(step < 4){ if(!validateStep(step)) return; if(step===3) buildReview(); goStep(step+1); }
+    if(step < 4){ if(!validateStep(step)) return; if(step===3) buildReview(); goStep(step+1, true); }
     else { submitQuote(); }
   });
-  btnBack.addEventListener('click', function(){ if(step>1) goStep(step-1); });
+  btnBack.addEventListener('click', function(){ if(step>1) goStep(step-1, true); });
 
   function val(id){ return document.getElementById(id).value.trim(); }
   function ctype(){ var e=document.querySelector('input[name="ctype"]:checked'); return e?e.value:''; }
@@ -650,7 +656,7 @@
   }
   document.getElementById('reviewArea').addEventListener('click', function(e){
     var b = e.target.closest('.edit'); if(!b) return;
-    goStep(+b.getAttribute('data-step'));
+    goStep(+b.getAttribute('data-step'), true);
   });
 
   /* Build the structured request the shared inbox would receive */

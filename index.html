@@ -33,6 +33,12 @@
 -->
 
 <link rel="stylesheet" href="assets/styles.css">
+<script>
+  // Always land at the top when arriving on this page (e.g. via the version
+  // switcher), unless the URL points at a specific #section.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('pageshow', function(){ if (!location.hash) window.scrollTo(0, 0); });
+</script>
 </head>
 <body>
 

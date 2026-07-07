@@ -65,12 +65,7 @@ ul{list-style:none}
 .hero .ey::before{content:'';display:block;width:28px;height:1.5px;background:var(--accent)}
 .hero h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem}
 .hero p{color:rgba(255,255,255,.6);font-size:.92rem;line-height:1.75;margin-bottom:2rem;max-width:520px}
-.hero-meta{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.1)}
-.hm-stat{text-align:left}
-.hm-stat .n{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:#fff;display:block;line-height:1}
-.hm-stat .l{font-size:.62rem;font-weight:500;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;display:block;margin-top:.15rem}
-.hm-div{width:1px;height:32px;background:rgba(255,255,255,.12)}
-.hero-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem}
+.hero-actions{display:flex;gap:.7rem;flex-wrap:wrap}
 .btn-prim{display:inline-block;padding:.72rem 1.6rem;border-radius:var(--r);background:var(--accent);color:#fff;font-weight:600;font-size:.84rem;transition:background .2s}
 .btn-prim:hover{background:var(--accent-dk)}
 .btn-ghost-w{display:inline-block;padding:.72rem 1.5rem;border-radius:var(--r);border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);font-weight:600;font-size:.84rem;transition:all .2s}
@@ -87,38 +82,24 @@ ul{list-style:none}
 
 /* ---- SECTION WRAPPER ---- */
 .wrap{max-width:1280px;margin:0 auto;padding:0 2rem}
-.cat-sec{padding:4rem 0}
-.cat-sec:not(:last-child){border-bottom:1px solid var(--line)}
-.cat-sec-inner{background:#fff;border-radius:10px;padding:2.5rem;box-shadow:var(--sh)}
+.cat-sec{padding:1.1rem 0}
+.cat-sec-inner{background:#fff;border-radius:10px;padding:1.6rem 1.9rem;box-shadow:var(--sh)}
 
 /* Category header */
-.cat-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
+.cat-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
 .cat-hdr-left{}
-.cat-num{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;display:block}
-.cat-hdr h2{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;line-height:1.15}
-.cat-hdr p{font-size:.84rem;color:var(--muted);max-width:560px;line-height:1.65}
+.cat-hdr h2{font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;line-height:1.15}
+.cat-hdr p{font-size:.83rem;color:var(--muted);max-width:640px;line-height:1.6}
 .cat-hdr-right{flex-shrink:0;padding-top:.25rem}
 .btn-out{display:inline-block;padding:.6rem 1.3rem;border-radius:var(--r);border:1.5px solid var(--line);color:var(--muted);font-weight:600;font-size:.78rem;transition:all .2s;white-space:nowrap}
 .btn-out:hover{border-color:var(--ink);color:var(--ink)}
 
-/* Product type grid */
-.type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.8rem}
-.type-card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--warm);transition:box-shadow .2s,border-color .2s}
-.type-card:hover{box-shadow:var(--sh);border-color:#d4cec6}
-.tc-img{height:140px;overflow:hidden;background:#e0dbd4}
-.tc-img img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
-.type-card:hover .tc-img img{transform:scale(1.05)}
-.tc-body{padding:1rem}
-.tc-name{font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
-.tc-spec{font-size:.72rem;color:var(--muted);line-height:1.5;margin-bottom:.6rem}
-.tc-lnk{font-size:.72rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.25rem;transition:gap .2s}
-.tc-lnk:hover{gap:.45rem}
-
 /* Brand row */
-.brand-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding-top:1.5rem;border-top:1px solid var(--line)}
+.brand-row{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
 .brand-row-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--light);margin-right:.25rem}
-.brand-tag{font-size:.72rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.22rem .75rem;transition:color .2s,border-color .2s}
-.brand-tag:hover{color:var(--ink);border-color:var(--ink)}
+.brand-tag{font-size:.72rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.24rem .8rem;transition:color .2s,border-color .2s,background .2s}
+.brand-tag:hover{color:var(--accent);border-color:var(--accent);background:#fff}
+.brand-note{font-size:.76rem;color:var(--light);font-style:italic}
 
 /* ---- BRAND DIRECTORY ---- */
 .brand-dir{padding:4rem 0;background:var(--warm)}
@@ -190,7 +171,6 @@ footer a:hover{color:#fff}
 
 /* ---- RESPONSIVE ---- */
 @media(max-width:1024px){
-  .type-grid{grid-template-columns:repeat(3,1fr)}
   .mfg-grid{grid-template-columns:repeat(2,1fr)}
   .qsec .inner{grid-template-columns:1fr;gap:2.5rem}
   .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
@@ -200,18 +180,12 @@ footer a:hover{color:#fff}
   .nav-ham{display:flex}
   .cat-tabs{display:block;position:sticky;top:86px;z-index:200;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06)}
   .hero{padding:6.5rem 0 3rem}
-  .hero-meta{gap:1.2rem}
-  .hm-div{display:none}
-  .type-grid{grid-template-columns:repeat(2,1fr)}
-  .cat-hdr{flex-direction:column;gap:.75rem}
+  .cat-hdr{flex-direction:column;gap:.6rem}
   .mfg-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr;gap:1.8rem}
   .wrap{padding:0 1.25rem}
-  .cat-sec-inner{padding:1.75rem}
+  .cat-sec-inner{padding:1.5rem}
   .vswitch .lbl{display:none}
-}
-@media(max-width:480px){
-  .type-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -231,11 +205,15 @@ footer a:hover{color:#fff}
   <button class="btn-close" id="mobClose" aria-label="Close menu">&#215;</button>
   <nav>
     <a href="#siding">Siding</a>
-    <a href="#windows">Windows &amp; Doors</a>
-    <a href="#decking">Decking &amp; Railing</a>
+    <a href="#windows">Windows</a>
+    <a href="#trim">Trim &amp; Accessories</a>
+    <a href="#decking">Decking</a>
+    <a href="#doors">Doors</a>
+    <a href="#shutters">Shutters</a>
     <a href="#gutters">Gutters</a>
-    <a href="#roofing">Metal Roofing</a>
-    <a href="#stone">Stone &amp; Trim</a>
+    <a href="#railing">Railing &amp; Fencing</a>
+    <a href="#columns">Columns</a>
+    <a href="#equipment">Equipment</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="macts">
@@ -253,10 +231,10 @@ footer a:hover{color:#fff}
     <div class="nav-right">
       <a href="#siding">Siding</a>
       <a href="#windows">Windows</a>
+      <a href="#doors">Doors</a>
       <a href="#decking">Decking</a>
       <a href="#gutters">Gutters</a>
-      <a href="#roofing">Metal Roofing</a>
-      <a href="#stone">Stone &amp; Trim</a>
+      <a href="#railing">Railing</a>
       <a class="btn-ns" href="tel:+15402651835">(540) 265-1835</a>
     </div>
     <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
@@ -270,7 +248,7 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="hero-inner">
       <h1>Everything exterior, from one source.</h1>
-      <p>Wholesale siding, windows, doors, decking, gutters, metal roofing, stone and trim. In-stock and special-order. Contractor pricing. Serving Virginia and West Virginia since 1989.</p>
+      <p>Wholesale siding, windows, doors, trim, decking, shutters, gutters, railing, columns and equipment. In-stock and special-order. Contractor pricing. Serving Virginia and West Virginia since 1989.</p>
       <div class="hero-actions">
         <a class="btn-prim" href="#siding">Browse Products</a>
         <a class="btn-ghost-w" href="#contact">Contact Us</a>
@@ -282,30 +260,16 @@ footer a:hover{color:#fff}
 <!-- ===== Category Tabs (mobile only) ===== -->
 <div class="cat-tabs" id="catTabs">
   <div class="inner">
-    <a class="ct-item active" href="#siding">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg>
-      Siding
-    </a>
-    <a class="ct-item" href="#windows">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
-      Windows &amp; Doors
-    </a>
-    <a class="ct-item" href="#decking">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V9l4 2V9l4 2V9l4 2v10"/></svg>
-      Decking
-    </a>
-    <a class="ct-item" href="#gutters">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/><path d="M7 13v7M17 13v4"/></svg>
-      Gutters
-    </a>
-    <a class="ct-item" href="#roofing">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12L12 3l9 9"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg>
-      Roofing
-    </a>
-    <a class="ct-item" href="#stone">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
-      Stone
-    </a>
+    <a class="ct-item active" href="#siding">Siding</a>
+    <a class="ct-item" href="#windows">Windows</a>
+    <a class="ct-item" href="#trim">Trim &amp; Accessories</a>
+    <a class="ct-item" href="#decking">Decking</a>
+    <a class="ct-item" href="#doors">Doors</a>
+    <a class="ct-item" href="#shutters">Shutters</a>
+    <a class="ct-item" href="#gutters">Gutters</a>
+    <a class="ct-item" href="#railing">Railing &amp; Fencing</a>
+    <a class="ct-item" href="#columns">Columns</a>
+    <a class="ct-item" href="#equipment">Equipment</a>
   </div>
 </div>
 
@@ -319,153 +283,105 @@ footer a:hover{color:#fff}
       <div class="cat-hdr">
         <div class="cat-hdr-left">
           <h2>Siding</h2>
-          <p>Vinyl, fiber cement, engineered wood, metal panel, and manufactured stone siding. In-stock selections and full special-order access to manufacturer lines.</p>
+          <p>Vinyl, fiber cement, engineered wood, metal panel and manufactured stone. In-stock selections plus special-order access to every line we carry.</p>
         </div>
         <div class="cat-hdr-right"><a class="btn-out" href="../siding.html">View full siding catalog &rarr;</a></div>
       </div>
-      <div class="type-grid">
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=400&q=75" alt="Vinyl Siding" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Vinyl Siding</div>
-            <div class="tc-spec">Widths: 4", 5", 6", 8" &middot; Solid &amp; insulated panels &middot; Shakes &amp; scallops available</div>
-            <a class="tc-lnk" href="../siding.html">View brands &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=75" alt="Fiber Cement Siding" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Fiber Cement</div>
-            <div class="tc-spec">Lap, panel &amp; shingle profiles &middot; Primed &amp; pre-finished &middot; HardieZone engineered-to-region options</div>
-            <a class="tc-lnk" href="../siding.html">View brands &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=75" alt="Engineered Wood Siding" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Engineered Wood</div>
-            <div class="tc-spec">Lap &amp; panel &middot; SmartGuard protected against fungal decay &amp; termites &middot; Paintable &amp; stainable</div>
-            <a class="tc-lnk" href="../siding.html">View brands &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1564182842519-8a3b2af3e228?auto=format&fit=crop&w=400&q=75" alt="Manufactured Stone" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Manufactured Stone</div>
-            <div class="tc-spec">Interior &amp; exterior &middot; Corner units included &middot; Full line of colors, shapes &amp; textures</div>
-            <a class="tc-lnk" href="../siding.html">View brands &rarr;</a>
-          </div>
-        </div>
-      </div>
       <div class="brand-row">
         <span class="brand-row-label">Brands:</span>
-        <span class="brand-tag">StyleCrest</span>
-        <span class="brand-tag">Alside</span>
-        <span class="brand-tag">James Hardie</span>
-        <span class="brand-tag">LP SmartSide</span>
-        <span class="brand-tag">Allura</span>
-        <span class="brand-tag">Novik</span>
-        <span class="brand-tag">Exteria</span>
-        <span class="brand-tag">The Foundry</span>
-        <span class="brand-tag">Nichiha</span>
-        <span class="brand-tag">StoneCraft</span>
+        <a class="brand-tag" href="https://www.stylecrestinc.com/" target="_blank" rel="noopener">StyleCrest</a>
+        <a class="brand-tag" href="https://www.alside.com/" target="_blank" rel="noopener">Alside</a>
+        <a class="brand-tag" href="https://www.jameshardie.com/" target="_blank" rel="noopener">James Hardie</a>
+        <a class="brand-tag" href="https://www.lpcorp.com/products/siding" target="_blank" rel="noopener">LP SmartSide</a>
+        <a class="brand-tag" href="https://www.allurausa.com/" target="_blank" rel="noopener">Allura</a>
+        <a class="brand-tag" href="https://www.novik.com/" target="_blank" rel="noopener">Novik</a>
+        <a class="brand-tag" href="https://www.exteriabp.com/" target="_blank" rel="noopener">Exteria</a>
+        <a class="brand-tag" href="https://www.foundrysiding.com/" target="_blank" rel="noopener">The Foundry</a>
+        <a class="brand-tag" href="https://www.nichiha.com/" target="_blank" rel="noopener">Nichiha</a>
+        <a class="brand-tag" href="https://www.stonecraft.com/" target="_blank" rel="noopener">StoneCraft</a>
       </div>
     </div>
   </div>
 
-  <!-- WINDOWS & DOORS -->
+  <!-- WINDOWS -->
   <div class="cat-sec reveal" id="windows">
     <div class="cat-sec-inner">
       <div class="cat-hdr">
         <div class="cat-hdr-left">
-          <h2>Windows &amp; Doors</h2>
-          <p>Energy-efficient windows and exterior doors for residential and light commercial applications. New construction and replacement configurations available.</p>
-        </div>
-      </div>
-      <div class="type-grid">
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=400&q=75" alt="Windows" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Replacement Windows</div>
-            <div class="tc-spec">Double-hung, casement, awning, slider &middot; Vinyl frames &middot; Low-E glass &middot; Multiple grid options</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=400&q=75" alt="New Construction Windows" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">New Construction Windows</div>
-            <div class="tc-spec">Nailing fin &amp; block frame &middot; Single &amp; double-hung, casement, picture &middot; Custom sizes available</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1562664348-a9d3b5f5a3b5?auto=format&fit=crop&w=400&q=75" alt="Exterior Doors" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Exterior Doors</div>
-            <div class="tc-spec">Steel, fiberglass &amp; wood &middot; Entry, patio &amp; sliding glass &middot; Pre-hung units available</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=400&q=75" alt="Patio Doors" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Patio &amp; Sliding Doors</div>
-            <div class="tc-spec">2-, 3- &amp; 4-panel configurations &middot; Vinyl &amp; aluminum frames &middot; Screen included</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
+          <h2>Windows</h2>
+          <p>Energy-efficient replacement and new-construction windows &mdash; double-hung, casement, awning, slider and picture styles with Low-E glass and a wide range of colors and grids.</p>
         </div>
       </div>
       <div class="brand-row">
         <span class="brand-row-label">Brands:</span>
-        <span class="brand-tag">Gentek</span>
-        <span class="brand-tag">Alside</span>
+        <a class="brand-tag" href="https://www.gentekbp.com/" target="_blank" rel="noopener">Gentek</a>
+        <a class="brand-tag" href="https://www.alside.com/" target="_blank" rel="noopener">Alside</a>
       </div>
     </div>
   </div>
 
-  <!-- DECKING & RAILING -->
+  <!-- TRIM &AMP; ACCESSORIES -->
+  <div class="cat-sec reveal" id="trim">
+    <div class="cat-sec-inner">
+      <div class="cat-hdr">
+        <div class="cat-hdr-left">
+          <h2>Trim &amp; Accessories</h2>
+          <p>Aluminum trim coil, soffit, fascia, J-channel, corner posts, mounting blocks, vents and the fasteners that finish every exterior job.</p>
+        </div>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Brands:</span>
+        <a class="brand-tag" href="https://www.alside.com/" target="_blank" rel="noopener">Alside</a>
+        <a class="brand-tag" href="https://www.gentekbp.com/" target="_blank" rel="noopener">Gentek</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECKING -->
   <div class="cat-sec reveal" id="decking">
     <div class="cat-sec-inner">
       <div class="cat-hdr">
         <div class="cat-hdr-left">
-          <h2>Decking &amp; Railing</h2>
-          <p>Composite, PVC, and wood-alternative decking systems with matching railing and fencing. Low maintenance with long-term warranties.</p>
+          <h2>Decking</h2>
+          <p>Composite, PVC and wood-alternative decking &mdash; low-maintenance boards in a range of colors with matching fasteners, backed by long-term warranties.</p>
         </div>
       </div>
-      <div class="type-grid">
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=75" alt="Composite Decking" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Composite Decking</div>
-            <div class="tc-spec">Solid &amp; hollow core &middot; Grooved &amp; square edge &middot; Multiple color lines &middot; Fade and stain resistant</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Brands:</span>
+        <span class="brand-note">Multiple lines available &mdash; ask us for current options</span>
+        <!-- TODO: David to confirm brand list for this category -->
+      </div>
+    </div>
+  </div>
+
+  <!-- DOORS -->
+  <div class="cat-sec reveal" id="doors">
+    <div class="cat-sec-inner">
+      <div class="cat-hdr">
+        <div class="cat-hdr-left">
+          <h2>Doors</h2>
+          <p>Steel, fiberglass and wood exterior doors &mdash; entry, patio and sliding glass units, available pre-hung and in a variety of configurations.</p>
         </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=400&q=75" alt="PVC Decking" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">PVC Decking</div>
-            <div class="tc-spec">100% cellular PVC &middot; No organic material &middot; Ideal for dockside &amp; high-moisture environments</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Brands:</span>
+        <a class="brand-tag" href="https://www.alside.com/" target="_blank" rel="noopener">Alside</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHUTTERS -->
+  <div class="cat-sec reveal" id="shutters">
+    <div class="cat-sec-inner">
+      <div class="cat-hdr">
+        <div class="cat-hdr-left">
+          <h2>Shutters</h2>
+          <p>Decorative exterior shutters in louvered and raised-panel styles, in a wide range of colors and sizes to complement any elevation.</p>
         </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=75" alt="Railing Systems" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Railing Systems</div>
-            <div class="tc-spec">Aluminum, vinyl &amp; composite &middot; Top rail, post &amp; baluster kits &middot; Code-compliant configurations</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=75" alt="Fencing" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Fencing</div>
-            <div class="tc-spec">Vinyl privacy, picket &amp; rail fence &middot; Post, panel &amp; gate components &middot; Full accessory kits</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Brands:</span>
+        <a class="brand-tag" href="https://www.stylecrestinc.com/" target="_blank" rel="noopener">StyleCrest</a>
       </div>
     </div>
   </div>
@@ -475,145 +391,63 @@ footer a:hover{color:#fff}
     <div class="cat-sec-inner">
       <div class="cat-hdr">
         <div class="cat-hdr-left">
-          <h2>Gutters &amp; Accessories</h2>
-          <p>We produce our own gutter coil and accessories in-house, giving us direct control over availability and quality. Aluminum and steel profiles in multiple widths and colors.</p>
-        </div>
-      </div>
-      <div class="type-grid">
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=400&q=75" alt="K-Style Gutters" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">K-Style Gutters</div>
-            <div class="tc-spec">4", 5" &amp; 6" widths &middot; .019–.032 aluminum &middot; Painted &amp; galvalume finish &middot; Coil stock available</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=400&q=75" alt="Half-Round Gutters" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Half-Round Gutters</div>
-            <div class="tc-spec">5" &amp; 6" half-round &middot; Copper &amp; aluminum options &middot; Traditional architectural profile</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=400&q=75" alt="Downspouts" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Downspouts &amp; Elbows</div>
-            <div class="tc-spec">2"x3" &amp; 3"x4" rectangular &middot; Round profiles &middot; A, B &amp; C elbows &middot; Straps &amp; connectors</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=75" alt="Gutter Accessories" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Accessories &amp; Coil</div>
-            <div class="tc-spec">End caps, miters, hangers, drop outlets &middot; Aluminum coil stock &middot; Fascia cover &amp; drip edge</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- METAL ROOFING -->
-  <div class="cat-sec reveal" id="roofing">
-    <div class="cat-sec-inner">
-      <div class="cat-hdr">
-        <div class="cat-hdr-left">
-          <h2>Metal Roofing</h2>
-          <p>Rolled-form and standing seam metal roofing panels for residential, agricultural, and commercial applications. New construction and re-roofing.</p>
-        </div>
-      </div>
-      <div class="type-grid">
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=400&q=75" alt="Standing Seam" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Standing Seam</div>
-            <div class="tc-spec">12", 16" &amp; 18" panels &middot; Concealed fastener &middot; Residential &amp; commercial &middot; 40-year paint warranty</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=75" alt="Exposed Fastener Panels" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Exposed Fastener Panels</div>
-            <div class="tc-spec">R-panel, 5V crimp &amp; corrugated &middot; Agricultural &amp; post-frame &middot; 29 &amp; 26 gauge</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=75" alt="Metal Siding Panels" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Metal Siding Panels</div>
-            <div class="tc-spec">Vertical wall panels &middot; Post-frame &amp; commercial &middot; Matches roofing panel profiles &amp; colors</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=400&q=75" alt="Roofing Trim & Accessories" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Trim &amp; Accessories</div>
-            <div class="tc-spec">Eave, rake, ridge &amp; valley trim &middot; Closures, screws &amp; sealants &middot; Custom-formed trim available</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
+          <h2>Gutters</h2>
+          <p>Aluminum and steel K-style and half-round gutters, downspouts, elbows, hangers and coil stock in multiple widths and colors &mdash; coil and accessories produced in-house.</p>
         </div>
       </div>
       <div class="brand-row">
         <span class="brand-row-label">Brands:</span>
-        <span class="brand-tag">ABC (American Building Components)</span>
-        <span class="brand-tag">Marco Metals</span>
+        <span class="brand-note">Gutter coil &amp; accessories manufactured in-house</span>
       </div>
     </div>
   </div>
 
-  <!-- STONE & TRIM -->
-  <div class="cat-sec reveal" id="stone">
+  <!-- RAILING &AMP; FENCING -->
+  <div class="cat-sec reveal" id="railing">
     <div class="cat-sec-inner">
       <div class="cat-hdr">
         <div class="cat-hdr-left">
-          <h2>Stone &amp; Trim</h2>
-          <p>Manufactured stone veneer and architectural trim that complete any exterior project. Available in a wide range of colors, shapes, and textures.</p>
-        </div>
-      </div>
-      <div class="type-grid">
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1564182842519-8a3b2af3e228?auto=format&fit=crop&w=400&q=75" alt="Manufactured Stone Veneer" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Manufactured Stone Veneer</div>
-            <div class="tc-spec">Interior &amp; exterior rated &middot; Field stone, ledge, brick &amp; cobble profiles &middot; Corner units included</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=75" alt="Trim Boards" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Trim Boards &amp; Moulding</div>
-            <div class="tc-spec">PVC &amp; cellular foam &middot; Primed wood &middot; Multiple widths &amp; profiles &middot; Pairs with all siding lines</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=400&q=75" alt="Soffit and Fascia" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Soffit &amp; Fascia</div>
-            <div class="tc-spec">Vented &amp; solid soffit panels &middot; Aluminum &amp; vinyl fascia covers &middot; Wide range of colors</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
-        </div>
-        <div class="type-card">
-          <div class="tc-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=75" alt="Wrap and Accessories" loading="lazy"></div>
-          <div class="tc-body">
-            <div class="tc-name">Housewrap &amp; Flashing</div>
-            <div class="tc-spec">Moisture barrier housewrap &middot; Self-adhesive flashing tape &middot; Window &amp; door rough opening flashing</div>
-            <a class="tc-lnk" href="#">Inquire &rarr;</a>
-          </div>
+          <h2>Railing &amp; Fencing</h2>
+          <p>Aluminum, vinyl and composite railing plus vinyl privacy, picket and rail fencing &mdash; posts, panels, balusters, gates and full accessory kits, all code-compliant.</p>
         </div>
       </div>
       <div class="brand-row">
         <span class="brand-row-label">Brands:</span>
-        <span class="brand-tag">StoneCraft</span>
-        <span class="brand-tag">Novik</span>
+        <a class="brand-tag" href="https://www.alside.com/" target="_blank" rel="noopener">Alside</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLUMNS -->
+  <div class="cat-sec reveal" id="columns">
+    <div class="cat-sec-inner">
+      <div class="cat-hdr">
+        <div class="cat-hdr-left">
+          <h2>Columns</h2>
+          <p>Structural and decorative columns and post wraps in fiberglass, PVC and composite &mdash; round and square profiles for porches, entries and load-bearing spans.</p>
+        </div>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Brands:</span>
+        <span class="brand-note">Multiple lines available &mdash; ask us for current options</span>
+        <!-- TODO: David to confirm brand list for this category -->
+      </div>
+    </div>
+  </div>
+
+  <!-- EQUIPMENT -->
+  <div class="cat-sec reveal" id="equipment">
+    <div class="cat-sec-inner">
+      <div class="cat-hdr">
+        <div class="cat-hdr-left">
+          <h2>Equipment</h2>
+          <p>Tools and jobsite equipment for the trades &mdash; brakes, snips, fasteners and the essentials contractors need to install what we sell.</p>
+        </div>
+      </div>
+      <div class="brand-row">
+        <span class="brand-row-label">Brands:</span>
+        <span class="brand-note">Ask us about available equipment lines</span>
+        <!-- TODO: David to confirm brand list for this category -->
       </div>
     </div>
   </div>
@@ -782,11 +616,15 @@ footer a:hover{color:#fff}
       <div>
         <h4>Products</h4>
         <a href="#siding">Siding</a>
-        <a href="#windows">Windows &amp; Doors</a>
-        <a href="#decking">Decking &amp; Railing</a>
+        <a href="#windows">Windows</a>
+        <a href="#trim">Trim &amp; Accessories</a>
+        <a href="#decking">Decking</a>
+        <a href="#doors">Doors</a>
+        <a href="#shutters">Shutters</a>
         <a href="#gutters">Gutters</a>
-        <a href="#roofing">Metal Roofing</a>
-        <a href="#stone">Stone &amp; Trim</a>
+        <a href="#railing">Railing &amp; Fencing</a>
+        <a href="#columns">Columns</a>
+        <a href="#equipment">Equipment</a>
       </div>
       <div>
         <h4>Manufacturers</h4>
@@ -822,7 +660,7 @@ mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 // Active tab on scroll (mobile only)
-var secs = ['siding','windows','decking','gutters','roofing','stone'];
+var secs = ['siding','windows','trim','decking','doors','shutters','gutters','railing','columns','equipment'];
 var tabs = document.querySelectorAll('.ct-item');
 window.addEventListener('scroll', function(){
   var scrollY = window.scrollY + 110;

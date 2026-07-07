@@ -74,7 +74,7 @@ ul{list-style:none}
 /* ---- HERO ---- */
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;background:#111}
 .hero .bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1900&q=80');background-size:cover;background-position:center;opacity:.52}
-.hero .wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:8rem 2rem 5rem;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;width:100%}
+.hero .wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:8rem 2rem 5rem;width:100%}
 .ht .ey{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem}
 .ht h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,4rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1.2rem}
 .ht p{color:rgba(255,255,255,.72);font-size:1.02rem;line-height:1.75;max-width:500px;margin-bottom:2rem}
@@ -270,8 +270,8 @@ footer a:hover{color:#fff}
     <a href="#contact">Contact</a>
   </nav>
   <div class="macts">
-    <a class="btn-prim" href="#quote" style="text-align:center">Get a Quote</a>
-    <a class="btn-out" href="tel:+15402651835" style="text-align:center">(540) 265-1835</a>
+    <a class="btn-prim" href="tel:+15402651835" style="text-align:center">Call (540) 265-1835</a>
+    <a class="btn-out" href="https://maps.google.com/?q=2131+Plantation+Rd+NE,+Roanoke+VA+24012" target="_blank" rel="noopener" style="text-align:center">Get Directions</a>
   </div>
 </div>
 
@@ -294,7 +294,6 @@ footer a:hover{color:#fff}
     </div>
     <div class="nav-acts">
       <a class="btn-ngo" href="tel:+15402651835">(540) 265-1835</a>
-      <a class="btn-ns" href="#quote">Get a Quote</a>
     </div>
     <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -316,45 +315,6 @@ footer a:hover{color:#fff}
       </div>
     </div>
 
-    <!-- Floating quote card -->
-    <div class="qcard" id="quote">
-      <h3>Request a Quote</h3>
-      <p class="qsub">Tell us about your project and we'll be in touch.</p>
-      <form id="heroForm" novalidate>
-        <div class="qrow">
-          <div class="qf">
-            <label for="hName">Name</label>
-            <input id="hName" type="text" placeholder="Your name" autocomplete="name">
-          </div>
-          <div class="qf">
-            <label for="hPhone">Phone</label>
-            <input id="hPhone" type="tel" placeholder="(540) 000-0000" autocomplete="tel">
-          </div>
-        </div>
-        <div class="qf">
-          <label for="hProd">Product Interest</label>
-          <select id="hProd">
-            <option value="">Select a category...</option>
-            <option>Siding</option>
-            <option>Windows &amp; Doors</option>
-            <option>Decking &amp; Railing</option>
-            <option>Gutters &amp; Accessories</option>
-            <option>Metal Roofing</option>
-            <option>Stone &amp; Trim</option>
-            <option>Other / Multiple</option>
-          </select>
-        </div>
-        <div class="qf">
-          <label for="hEmail">Email</label>
-          <input id="hEmail" type="email" placeholder="your@email.com" autocomplete="email">
-        </div>
-        <div class="qf">
-          <label for="hNotes">Notes <span style="font-weight:400;color:var(--light)">(optional)</span></label>
-          <textarea id="hNotes" placeholder="Briefly describe your project..."></textarea>
-        </div>
-        <button type="submit" class="btn-qsub">Send Quote Request</button>
-      </form>
-    </div>
   </div>
 </section>
 
@@ -523,7 +483,7 @@ footer a:hover{color:#fff}
         <p>We're a locally owned, family-operated wholesale supplier. That means you'll work with people who know the products, know the region, and are focused on making sure you have what you need for your project.</p>
         <p>From our in-house gutter production facility to our relationships with leading manufacturers, we're built to serve contractors, builders, and remodelers.</p>
         <div class="acts">
-          <a class="btn-prim" href="#quote">Get a Quote</a>
+          <a class="btn-prim" href="tel:+15402651835">Call (540) 265-1835</a>
           <a class="btn-out" href="#products">Browse Products</a>
         </div>
       </div>
@@ -600,12 +560,12 @@ footer a:hover{color:#fff}
 <section class="ctasec" id="contact">
   <div class="ov"></div>
   <div class="wrap">
-    <span class="slabel" style="color:var(--accent)">Ready to Get Started?</span>
-    <h2>Visit the showroom or request a quote</h2>
-    <p>We're at 2131 Plantation Rd NE, Roanoke VA 24012. Come in, call, or send us your project details.</p>
+    <span class="slabel" style="color:var(--accent)">Come See Us</span>
+    <h2>Visit the showroom or give us a call.</h2>
+    <p>We're at 2131 Plantation Rd NE, Roanoke VA 24012. Walk-ins welcome Monday through Friday.</p>
     <div class="cacts">
-      <a class="btn-prim" href="#quote">Request a Quote</a>
-      <a class="btn-ghost-w" href="tel:+15402651835">Call (540) 265-1835</a>
+      <a class="btn-prim" href="tel:+15402651835">Call (540) 265-1835</a>
+      <a class="btn-ghost-w" href="https://maps.google.com/?q=2131+Plantation+Rd+NE,+Roanoke+VA+24012" target="_blank" rel="noopener">Get Directions</a>
     </div>
     <div class="mapwrap">
       <iframe
@@ -709,19 +669,6 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
 }
 
-// Quote form
-document.getElementById('heroForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  this.innerHTML = [
-    '<div style="text-align:center;padding:2.5rem 1rem">',
-    '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c4622d" stroke-width="1.5" style="margin:0 auto 1rem;display:block">',
-    '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
-    '</svg>',
-    '<h3 style="font-family:Playfair Display,serif;color:#1d1c1a;margin-bottom:.4rem">Request Received</h3>',
-    '<p style="font-size:.83rem;color:#6b6560;line-height:1.6">Thanks! We\'ll be in touch about your project.</p>',
-    '</div>'
-  ].join('');
-});
 </script>
 </body>
 </html>

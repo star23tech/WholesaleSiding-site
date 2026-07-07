@@ -83,7 +83,6 @@
       </ul>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn--outline btn-quote" href="#contact">Get a Quote</a>
       <a class="btn btn--primary" href="tel:+15402651835">
         <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
         Call
@@ -100,7 +99,7 @@
     <h1>Quality exterior building products, supplied right.</h1>
     <p>From siding and windows to gutters, decking and railing, the trusted source for contractors and building professionals across Virginia &amp; West Virginia for over 35 years.</p>
     <div class="actions">
-      <a class="btn btn--primary" href="#contact">Request a Quote</a>
+      <a class="btn btn--primary" href="tel:+15402651835">Call (540) 265-1835</a>
       <a class="btn btn--ghost" href="#products">Browse Products</a>
     </div>
   </div>
@@ -268,11 +267,11 @@
 <!-- ===== CTA band ===== -->
 <section class="section cta">
   <div class="wrap">
-    <h2>Ready to start your next project?</h2>
-    <p>Tell us what you need and get a quote for exactly what your project calls for. Prefer to talk it through? We're a call away.</p>
+    <h2>Come see us or give us a call.</h2>
+    <p>We're open weekdays at our Roanoke showroom. Walk-ins welcome. Our team can help you find the right product for your project.</p>
     <div class="actions">
-      <a class="btn btn--primary" href="#contact">Request a Quote</a>
-      <a class="btn btn--ghost" href="tel:+15402651835">Call (540) 265-1835</a>
+      <a class="btn btn--primary" href="tel:+15402651835">Call (540) 265-1835</a>
+      <a class="btn btn--ghost" href="https://maps.google.com/?q=2131+Plantation+Rd+NE,+Roanoke+VA+24012" target="_blank" rel="noopener">Get Directions</a>
     </div>
   </div>
 </section>
@@ -281,11 +280,11 @@
 <section class="section section--soft" id="contact">
   <div class="wrap">
     <div class="section-head center">
-      <p class="eyebrow">Get In Touch</p>
-      <h2>Request a quote or ask a question</h2>
-      <p class="lead">Send us your project details and get a quote for exactly what your job needs.</p>
+      <p class="eyebrow">Find Us</p>
+      <h2>Visit us in Roanoke</h2>
+      <p class="lead">Stop by our showroom, give us a call, or send us an email. We're here to help.</p>
     </div>
-    <div class="contact-grid">
+    <div class="contact-grid" style="grid-template-columns:1fr">
       <div class="reveal">
         <div class="info-block">
           <h3>Roanoke, Virginia</h3>
@@ -317,26 +316,6 @@
         </div>
       </div>
 
-      <div class="form-card reveal">
-        <!--
-          TODO: wire this form to a backend so submissions reach David's inbox.
-          Easiest options for a static site:
-            • Formspree:    <form action="https://formspree.io/f/XXXXXXXX" method="POST">
-            • Netlify Forms: add the  netlify  attribute (if hosted on Netlify)
-          The JS below just shows a confirmation for the mockup demo.
-        -->
-        <form id="contactForm" novalidate>
-          <div class="row">
-            <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" autocomplete="name" required></div>
-            <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" autocomplete="tel" required></div>
-          </div>
-          <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
-          <div class="field"><label for="message">How can we help?</label><textarea id="message" name="message" required></textarea></div>
-          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Send Message</button>
-          <p class="form-note">Your details are kept private and used only for your quote.</p>
-          <div class="success" id="formSuccess">Thanks! Your message has been sent. We'll be in touch soon.</div>
-        </form>
-      </div>
     </div>
   </div>
 </section>
@@ -397,13 +376,6 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
 
-  // Demo form handler (replace with real backend — see comment above the form)
-  document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!this.checkValidity()){ this.reportValidity(); return; }
-    document.getElementById('formSuccess').style.display = 'block';
-    this.reset();
-  });
 </script>
 </body>
 </html>

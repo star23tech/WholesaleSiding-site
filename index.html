@@ -73,8 +73,14 @@ ul{list-style:none}
 
 /* ---- CATEGORY TABS (always-on sticky product nav) ---- */
 .cat-tabs{display:block;position:sticky;top:86px;z-index:200;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.cat-tabs .inner{display:flex;align-items:stretch;max-width:1280px;margin:0 auto;padding:0 2rem;overflow-x:auto;scrollbar-width:none}
+.cat-tabs .inner{position:relative;display:flex;align-items:stretch;max-width:1280px;margin:0 auto;padding:0 2rem;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth}
 .cat-tabs .inner::-webkit-scrollbar{display:none}
+/* edge fades signal that the bar scrolls horizontally */
+.cat-tabs::before,.cat-tabs::after{content:'';position:absolute;top:0;bottom:0;width:34px;pointer-events:none;z-index:2;opacity:0;transition:opacity .2s}
+.cat-tabs::before{left:0;background:linear-gradient(to right,#fff 30%,rgba(255,255,255,0))}
+.cat-tabs::after{right:0;background:linear-gradient(to left,#fff 30%,rgba(255,255,255,0))}
+.cat-tabs.can-left::before{opacity:1}
+.cat-tabs.can-right::after{opacity:1}
 .ct-item{flex-shrink:0;display:flex;align-items:center;gap:.4rem;padding:.8rem 1rem;font-size:.75rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
 .ct-item.active{color:var(--accent);border-bottom-color:var(--accent)}
 .ct-item svg{flex-shrink:0;opacity:.6}
@@ -640,11 +646,38 @@ mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-// Active tab on scroll (mobile only)
+// Active product tab tracks page scroll and keeps itself in view
 var secs = ['siding','windows','trim','decking','doors','shutters','gutters','railing','columns','equipment'];
 var tabs = document.querySelectorAll('.ct-item');
+var catTabs = document.getElementById('catTabs');
+var tabsInner = catTabs ? catTabs.querySelector('.inner') : null;
+var lastCurrent = null;
+
+// Show/hide the edge fades based on how far the bar is scrolled
+function updateFades(){
+  if(!tabsInner) return;
+  var sl = tabsInner.scrollLeft;
+  var max = tabsInner.scrollWidth - tabsInner.clientWidth;
+  catTabs.classList.toggle('can-left', sl > 2);
+  catTabs.classList.toggle('can-right', sl < max - 2);
+}
+if(tabsInner){
+  tabsInner.addEventListener('scroll', updateFades, {passive:true});
+  window.addEventListener('resize', updateFades);
+  updateFades();
+}
+
+// Bring the active tab into view (centered) when it changes
+function centerActiveTab(id){
+  if(!tabsInner) return;
+  var active = tabsInner.querySelector('.ct-item[href="#' + id + '"]');
+  if(!active) return;
+  var target = active.offsetLeft - (tabsInner.clientWidth / 2) + (active.offsetWidth / 2);
+  tabsInner.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+}
+
 window.addEventListener('scroll', function(){
-  var scrollY = window.scrollY + 110;
+  var scrollY = window.scrollY + 150;
   var current = secs[0];
   secs.forEach(function(id){
     var el = document.getElementById(id);
@@ -653,6 +686,10 @@ window.addEventListener('scroll', function(){
   tabs.forEach(function(t){
     t.classList.toggle('active', t.getAttribute('href') === '#' + current);
   });
+  if(current !== lastCurrent){
+    lastCurrent = current;
+    centerActiveTab(current);
+  }
 }, {passive:true});
 
 // Reveal on scroll

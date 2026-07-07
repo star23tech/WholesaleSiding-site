@@ -78,17 +78,14 @@ ul{list-style:none}
 .btn-ghost-w{display:inline-block;padding:.72rem 1.5rem;border-radius:var(--r);border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);font-weight:600;font-size:.84rem;transition:all .2s}
 .btn-ghost-w:hover{border-color:rgba(255,255,255,.75);color:#fff}
 
-/* ---- CATEGORY TABS (mobile-only sticky) ---- */
+/* ---- CATEGORY TABS (hidden until hamburger nav is active) ---- */
 .cat-tabs{display:none}
-@media(max-width:768px){
-  .cat-tabs{display:block;position:sticky;top:51px;z-index:200;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-  .cat-tabs .inner{max-width:1280px;margin:0 auto;padding:0;display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none}
-  .cat-tabs .inner::-webkit-scrollbar{display:none}
-  .ct-item{flex-shrink:0;display:flex;align-items:center;gap:.4rem;padding:.75rem 1rem;font-size:.73rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
-  .ct-item.active{color:var(--accent);border-bottom-color:var(--accent)}
-  .ct-item svg{flex-shrink:0;opacity:.6}
-  .ct-item.active svg{opacity:1}
-}
+.cat-tabs .inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none}
+.cat-tabs .inner::-webkit-scrollbar{display:none}
+.ct-item{flex-shrink:0;display:flex;align-items:center;gap:.4rem;padding:.75rem 1rem;font-size:.73rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+.ct-item.active{color:var(--accent);border-bottom-color:var(--accent)}
+.ct-item svg{flex-shrink:0;opacity:.6}
+.ct-item.active svg{opacity:1}
 
 /* ---- SECTION WRAPPER ---- */
 .wrap{max-width:1280px;margin:0 auto;padding:0 2rem}
@@ -203,6 +200,7 @@ footer a:hover{color:#fff}
 @media(max-width:768px){
   .nav-right{display:none}
   .nav-ham{display:flex}
+  .cat-tabs{display:block;position:sticky;top:51px;z-index:200;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06)}
   .hero{padding:5.5rem 0 3rem}
   .hero-meta{gap:1.2rem}
   .hm-div{display:none}

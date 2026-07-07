@@ -21,9 +21,9 @@ ul{list-style:none}
 
 :root{
   --ink:#1d1c1a;
-  --navy:#1b2d45;
-  --accent:#c4622d;
-  --accent-dk:#a3501f;
+  --navy:#1e3272;
+  --accent:#35920E;
+  --accent-dk:#277518;
   --warm:#faf8f4;
   --cream:#f0ebe2;
   --bg:#f5f2ed;
@@ -37,19 +37,17 @@ ul{list-style:none}
 }
 
 /* ---- NAV ---- */
-.topnav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.07)}
+.topnav{position:fixed;top:0;left:0;right:0;z-index:300;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 10px rgba(0,0,0,.07)}
 .topnav .ni{display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto;padding:.9rem 2rem}
 .nav-brand{display:flex;align-items:center;gap:.65rem}
-.nav-brand .mark{width:32px;height:32px;border-radius:4px;background:var(--accent);color:#fff;font-family:var(--serif);font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nav-brand .bname{font-family:var(--serif);font-size:.95rem;font-weight:700;color:#fff}
-.nav-brand .bsub{font-size:.6rem;color:rgba(255,255,255,.4);letter-spacing:.06em;text-transform:uppercase;display:block}
+.nav-logo{height:44px;width:auto;display:block}
 .nav-right{display:flex;align-items:center;gap:1.5rem}
-.nav-right a{font-size:.78rem;color:rgba(255,255,255,.55);transition:color .2s}
-.nav-right a:hover{color:#fff}
+.nav-right a{font-size:.78rem;color:var(--muted);transition:color .2s}
+.nav-right a:hover{color:var(--navy)}
 .btn-ns{font-size:.75rem;font-weight:600;background:var(--accent);color:#fff;border-radius:var(--r);padding:.38rem .9rem;transition:background .2s}
 .btn-ns:hover{background:var(--accent-dk)}
 .nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.35rem}
-.nav-ham span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
+.nav-ham span{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px}
 
 /* ---- MOBILE MENU ---- */
 .mob-menu{display:none;position:fixed;inset:0;background:#fff;z-index:400;flex-direction:column;padding:4.5rem 1.5rem 2rem;overflow-y:auto}
@@ -59,7 +57,7 @@ ul{list-style:none}
 .mob-menu .btn-close{position:absolute;top:1rem;right:1.4rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink)}
 
 /* ---- HERO ---- */
-.hero{background:var(--navy);padding:7rem 0 4rem;position:relative;overflow:hidden}
+.hero{background:var(--navy);padding:8rem 0 4rem;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;right:-5%;top:-20%;width:55%;height:140%;background:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=70') center/cover no-repeat;opacity:.12;pointer-events:none}
 .hero .wrap{max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
 .hero-inner{max-width:680px}
@@ -200,8 +198,8 @@ footer a:hover{color:#fff}
 @media(max-width:768px){
   .nav-right{display:none}
   .nav-ham{display:flex}
-  .cat-tabs{display:block;position:sticky;top:51px;z-index:200;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-  .hero{padding:5.5rem 0 3rem}
+  .cat-tabs{display:block;position:sticky;top:74px;z-index:200;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .hero{padding:6.5rem 0 3rem}
   .hero-meta{gap:1.2rem}
   .hm-div{display:none}
   .type-grid{grid-template-columns:repeat(2,1fr)}
@@ -250,11 +248,7 @@ footer a:hover{color:#fff}
 <nav class="topnav" id="topNav">
   <div class="ni">
     <a class="nav-brand" href="index.html">
-      <div class="mark">WS</div>
-      <div>
-        <span class="bname">Wholesale Siding Supply</span>
-        <span class="bsub">Product Catalog &middot; Roanoke, VA</span>
-      </div>
+      <img src="../assets/logo.svg" alt="Wholesale Siding Supply, Inc." class="nav-logo">
     </a>
     <div class="nav-right">
       <a href="#siding">Siding</a>

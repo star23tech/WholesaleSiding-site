@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 118" role="img" aria-label="Wholesale Siding Supply, Inc.">
+  <!-- Navy house (behind, right) -->
+  <polygon points="110,20 50,100 175,100" fill="#1e3272"/>
+  <rect x="152" y="44" width="14" height="38" fill="#1e3272"/>
+  <rect x="103" y="32" width="12" height="12" fill="#fff"/>
+
+  <!-- Green house (front, left) -->
+  <polygon points="72,10 5,100 140,100" fill="#46AF35"/>
+  <rect x="18" y="48" width="14" height="35" fill="#389030"/>
+  <rect x="65" y="22" width="13" height="13" fill="#fff"/>
+
+  <!-- Green baseline -->
+  <rect x="5" y="100" width="175" height="4" fill="#46AF35"/>
+
+  <!-- Company name -->
+  <text x="190" y="50" font-family="'Arial Black','Arial',sans-serif" font-size="33" font-weight="900" fill="#1e3272" letter-spacing="-0.5">WHOLESALE</text>
+  <text x="190" y="73" font-family="'Arial Black','Arial',sans-serif" font-size="21.5" font-weight="900" fill="#1e3272">SIDING SUPPLY, INC.</text>
+  <line x1="190" y1="79" x2="478" y2="79" stroke="#46AF35" stroke-width="1.5"/>
+  <text x="190" y="95" font-family="'Arial','Helvetica',sans-serif" font-size="12.5" font-weight="700" fill="#1e3272" letter-spacing="0.3">ROANOKE, VA  •  540-265-1835</text>
+</svg>

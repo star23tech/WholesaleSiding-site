@@ -217,7 +217,19 @@ footer a:hover{color:#fff}
 .about-cta h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);color:#fff;margin-bottom:.6rem}
 .about-cta p{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:1.6rem}
 .about-cta .row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
-@media(max-width:860px){.about-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.about-photo{min-height:280px}}
+/* in-house gutter manufacturing spotlight */
+.gutter-sec{background:var(--navy);padding:4rem 0}
+.gutter-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;max-width:1280px;margin:0 auto;padding:0 2rem}
+.gutter-photo{position:relative;border-radius:12px;overflow:hidden;min-height:340px;background:#0f1d30 center/cover no-repeat;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.gutter-photo .badge{position:absolute;left:1rem;bottom:1rem;background:#fff;border-radius:8px;padding:.65rem 1rem;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.gutter-photo .badge b{display:block;font-family:var(--serif);color:var(--accent);font-size:1.15rem;line-height:1}
+.gutter-photo .badge span{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.gutter-copy .slabel{color:var(--accent)}
+.gutter-copy h2{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;color:#fff;margin-bottom:1rem;line-height:1.15}
+.gutter-copy p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.8;margin-bottom:1rem;max-width:560px}
+.gspecs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.3rem}
+.gspecs span{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:.28rem .85rem}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.about-photo{min-height:280px}.gutter-grid{grid-template-columns:1fr}.gutter-photo{min-height:260px}}
 </style>
 </head>
 <body>
@@ -280,7 +292,7 @@ footer a:hover{color:#fff}
       <p class="ey">Our Story</p>
       <h2>Locally owned and operated since 1989</h2>
       <p>Wholesale Siding Supply, Inc. is a locally owned and operated business founded in 1989 in Roanoke, Virginia. We take pride in distributing exterior products for building professionals, and within two years of opening we had already grown to expand our product line.</p>
-      <p>In 2008 we opened a new facility to more efficiently produce our own gutter accessories. Today we serve an expansive delivery area across Virginia and West Virginia, with both in-stock and special-order selections.</p>
+      <p>Over the years we've expanded our product lines and our reach. Today we serve an expansive delivery area across Virginia and West Virginia, with both in-stock and special-order selections for every phase of the job.</p>
       <ul class="about-check">
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Extensive in-stock <strong>and</strong> special-order selection</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Materials fully supported by major manufacturers</span></li>
@@ -290,6 +302,27 @@ footer a:hover{color:#fff}
     </div>
     <div class="about-photo reveal" style="background-image:linear-gradient(rgba(27,45,69,.15),rgba(27,45,69,.35)),url('assets/wss_roanoke.jpg')">
       <div class="badge"><b>Since 1989</b><span>Serving building pros</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== In-house gutter manufacturing ===== -->
+<section class="gutter-sec">
+  <div class="gutter-grid">
+    <div class="gutter-photo reveal" style="background-image:linear-gradient(rgba(15,29,48,.15),rgba(15,29,48,.45)),url('assets/guttermfg.avif')">
+      <div class="badge"><b>2008</b><span>Gutter facility opened</span></div>
+    </div>
+    <div class="gutter-copy reveal">
+      <span class="slabel">Made in-house</span>
+      <h2>We manufacture our own gutter coil</h2>
+      <p>In 2008 we opened a dedicated facility to produce our own gutter coil and accessories. Making them ourselves gives us direct control over availability, color and quality &mdash; so the material you need is ready when the job calls for it.</p>
+      <p>Aluminum and steel profiles in a range of widths and colors, plus the downspouts, elbows, hangers and coil stock to finish the run.</p>
+      <div class="gspecs">
+        <span>K-style &amp; half-round</span>
+        <span>Aluminum &amp; steel</span>
+        <span>Multiple widths &amp; colors</span>
+        <span>Downspouts &amp; accessories</span>
+      </div>
     </div>
   </div>
 </section>

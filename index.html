@@ -467,9 +467,28 @@ footer a:hover{color:#fff}
           <a class="btn-ghost-w" href="https://maps.google.com/?q=2131+Plantation+Rd+NE,+Roanoke+VA+24012" target="_blank" rel="noopener">Get Directions</a>
         </div>
       </div>
-      <div class="qform-card reveal rd1" style="padding:0;overflow:hidden;min-height:380px">
-        <iframe title="Wholesale Siding Supply location in Roanoke, VA" src="https://www.google.com/maps?q=2131%20Plantation%20Rd%20NE%2C%20Roanoke%2C%20VA%2024012&output=embed" width="100%" height="100%" style="border:0;display:block;min-height:380px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="qform-card reveal rd1">
+        <h3>Send us a message</h3>
+        <p class="qs">Questions about products, brands or availability? Send us a note and we'll get back to you. (Not for online orders &mdash; we're happy to take those by phone or in person.)</p>
+        <!-- Web3Forms: paste your access key below (free key at https://web3forms.com — sends to sales@wssinc.biz). Until then, submissions will show an error and prompt visitors to call. -->
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY">
+          <input type="hidden" name="subject" value="New message from the Wholesale Siding Supply website">
+          <input type="hidden" name="from_name" value="Wholesale Siding Supply Website">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important">
+          <div class="qrow">
+            <div class="qf"><label for="cf-name">Name</label><input id="cf-name" type="text" name="name" autocomplete="name" required></div>
+            <div class="qf"><label for="cf-phone">Phone</label><input id="cf-phone" type="tel" name="phone" autocomplete="tel"></div>
+          </div>
+          <div class="qf"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" autocomplete="email" required></div>
+          <div class="qf"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required></textarea></div>
+          <button class="btn-qsub" type="submit">Send Message</button>
+          <p id="cf-status" class="qs" role="status" style="margin:.9rem 0 0;display:none"></p>
+        </form>
       </div>
+    </div>
+    <div class="reveal" style="margin-top:2.5rem;border-radius:10px;overflow:hidden;box-shadow:var(--sh)">
+      <iframe title="Wholesale Siding Supply location in Roanoke, VA" src="https://www.google.com/maps?q=2131%20Plantation%20Rd%20NE%2C%20Roanoke%2C%20VA%2024012&output=embed" width="100%" height="300" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
@@ -589,6 +608,37 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 } else {
   document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+
+// Contact form (Web3Forms) — submits via fetch and shows an inline status
+var cf = document.getElementById('contactForm');
+if(cf){
+  cf.addEventListener('submit', function(e){
+    e.preventDefault();
+    var status = document.getElementById('cf-status');
+    var btn = cf.querySelector('.btn-qsub');
+    status.style.display = 'block';
+    status.style.color = 'var(--muted)';
+    status.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: {'Accept':'application/json'}, body: new FormData(cf)
+    }).then(function(r){ return r.json(); }).then(function(json){
+      if(json.success){
+        cf.reset();
+        status.style.color = 'var(--accent-dk)';
+        status.textContent = 'Thanks — your message has been sent. We\'ll be in touch soon.';
+      } else {
+        status.style.color = '#b23b3b';
+        status.textContent = 'Sorry, that didn\'t go through. Please call us at (540) 265-1835.';
+      }
+      btn.disabled = false;
+    }).catch(function(){
+      status.style.color = '#b23b3b';
+      status.textContent = 'Couldn\'t send right now. Please call us at (540) 265-1835.';
+      btn.disabled = false;
+    });
+  });
 }
 
 </script>

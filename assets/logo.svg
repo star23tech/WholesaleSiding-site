@@ -1,20 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 118" role="img" aria-label="Wholesale Siding Supply, Inc.">
-  <!-- Navy house (behind, right) -->
-  <polygon points="110,20 50,100 175,100" fill="#1e3272"/>
-  <rect x="152" y="44" width="14" height="38" fill="#1e3272"/>
-  <rect x="103" y="32" width="12" height="12" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 112" role="img" aria-label="Wholesale Siding Supply, Inc.">
 
-  <!-- Green house (front, left) -->
-  <polygon points="72,10 5,100 140,100" fill="#46AF35"/>
-  <rect x="18" y="48" width="14" height="35" fill="#389030"/>
-  <rect x="65" y="22" width="13" height="13" fill="#fff"/>
+  <!-- Navy house (behind / right) — outline created with fill-rule:evenodd -->
+  <path fill-rule="evenodd" fill="#1e3272" d="
+    M 118,24  L 54,102  L 182,102  Z
+    M 118,42  L 68,102  L 168,102  Z
+  "/>
+  <!-- Navy chimney (upper-right, sticking right off the right slope) -->
+  <rect x="156" y="21" width="17" height="35" fill="#1e3272"/>
+  <!-- Navy window (small square, inside open center near peak) -->
+  <rect x="110" y="33" width="13" height="13" fill="#1e3272"/>
+  <line x1="116.5" y1="33" x2="116.5" y2="46" stroke="#fff" stroke-width="1.2"/>
+  <line x1="110"   y1="39.5" x2="123" y2="39.5" stroke="#fff" stroke-width="1.2"/>
 
-  <!-- Green baseline -->
-  <rect x="5" y="100" width="175" height="4" fill="#46AF35"/>
+  <!-- White mask: hides the navy behind the green house's open center -->
+  <polygon points="80,6 2,102 160,102" fill="#fff"/>
 
-  <!-- Company name -->
-  <text x="190" y="50" font-family="'Arial Black','Arial',sans-serif" font-size="33" font-weight="900" fill="#1e3272" letter-spacing="-0.5">WHOLESALE</text>
-  <text x="190" y="73" font-family="'Arial Black','Arial',sans-serif" font-size="21.5" font-weight="900" fill="#1e3272">SIDING SUPPLY, INC.</text>
-  <line x1="190" y1="79" x2="478" y2="79" stroke="#46AF35" stroke-width="1.5"/>
-  <text x="190" y="95" font-family="'Arial','Helvetica',sans-serif" font-size="12.5" font-weight="700" fill="#1e3272" letter-spacing="0.3">ROANOKE, VA  •  540-265-1835</text>
+  <!-- Green house (front / left) — outline via fill-rule:evenodd -->
+  <path fill-rule="evenodd" fill="#46AF35" d="
+    M 80,6   L 2,102   L 160,102  Z
+    M 80,25  L 18,102  L 142,102  Z
+  "/>
+  <!-- Green chimney (lower-left, sticking left off the left slope) -->
+  <rect x="2" y="66" width="20" height="28" fill="#46AF35"/>
+  <!-- Green window (small square, inside open center near peak) -->
+  <rect x="73" y="16" width="13" height="13" fill="#46AF35"/>
+  <line x1="79.5" y1="16" x2="79.5" y2="29" stroke="#fff" stroke-width="1.2"/>
+  <line x1="73"   y1="22.5" x2="86" y2="22.5" stroke="#fff" stroke-width="1.2"/>
+
+  <!-- Green baseline — runs the full logo width -->
+  <rect x="2" y="102" width="486" height="5" fill="#46AF35"/>
+
+  <!-- Text block -->
+  <text x="190" y="60"
+        font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+        font-size="40" font-weight="900" fill="#1e3272">WHOLESALE</text>
+  <text x="190" y="89"
+        font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+        font-size="27" font-weight="900" fill="#1e3272">SIDING SUPPLY INC</text>
+
 </svg>

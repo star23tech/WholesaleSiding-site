@@ -217,6 +217,14 @@ footer a:hover{color:#fff}
 .faq-note svg{width:15px;height:15px;stroke:var(--accent);fill:none;stroke-width:2}
 @media(max-width:860px){.types-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.types-grid{grid-template-columns:1fr}}
+
+.mfg-list2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.4rem}
+.mfg2{background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.3rem 1.4rem;box-shadow:var(--sh)}
+.mfg2 h3{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:.45rem}
+.mfg2 p{font-size:.83rem;color:var(--muted);line-height:1.6}
+.mfg2 .visit{display:inline-block;margin-top:.6rem;font-size:.72rem;font-weight:600;color:var(--accent)}
+.mfg2 .visit:hover{color:var(--accent-dk)}
+@media(max-width:760px){.mfg-list2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -305,9 +313,15 @@ footer a:hover{color:#fff}
   <div class="brands-wrap reveal">
     <span class="slabel">Brands &amp; lines</span>
     <h2>Manufacturers we carry</h2>
-    <div class="brand-row">
-      <span class="brand-row-label">Brands:</span>
-        <span class="brand-note">Gutter coil &amp; accessories manufactured in-house, <a href="about.html" style="color:var(--accent);font-weight:600">see our facility &rarr;</a></span>
+    <div class="mfg-list2">
+      <div class="mfg2">
+        <h3>ALSCO</h3>
+        <p>ALSCO is America's only vertically integrated source of aluminum trim products. The company handles manufacturing in-house and customizes the manufacturing process to deliver performance and value.</p>
+      </div>
+      <div class="mfg2">
+        <h3>Berger Brothers</h3>
+        <p>Berger Brothers has provided roof drainage products for 135 years. They offer gutter accessories and DrySnap under-deck systems and are known for product range, pricing, custom capability, and customer service.</p>
+      </div>
     </div>
   </div>
 </section>
